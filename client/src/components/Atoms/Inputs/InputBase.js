@@ -16,7 +16,6 @@ export function InputBase(props) {
   const {
     id,
     name,
-    value,
     inputs,
     setInputs,
     placeholder,

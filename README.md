@@ -1,0 +1,1 @@
+I'm currently building an app to hekp people nurture and strengthen their existing communities and relationships. This is a fullstack app being built using Express/Node and React.

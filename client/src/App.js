@@ -11,7 +11,7 @@ const axios = require('axios').default;
 
 function App() {
   const { isLoading, isError, data, error } = useQuery('communityList', () => (
-    axios.get('http://localhost:9000/protected/communities')
+    axios.get('http://localhost:9000/')
       .then((res) => (
         res.data
       ))

@@ -2,49 +2,80 @@ import React, { useState } from "react";
 import { InputBase, InputLabelBase } from '../../../Atoms/Inputs/InputBase'
 import { InputDiv } from './Auth.styles.js'
 import { Form } from '../Form.styles.js'
+import ButtonBase from '../../../Atoms/Buttons/ButtonBase.js';
+import axios from 'axios';
 
 function SignupFormBase(props) {
 
   const [inputs, setInputs] = useState({
-    first_name: '',
-    last_name: '',
+    firstName: '',
+    lastName: '',
     password: '',
-    confirm_password: '',
+    confirmPassword: '',
     email: '',
   })
 
+  const { setSignedup, setSuccessMsg, setErrMsg, errMsg } = props;
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const userObj = {
+      firstName: inputs.firstName,
+      lastName: inputs.lastName,
+      password: inputs.password,
+      email: inputs.email
+    }
+    axios.post('http://localhost:9000/api/auth/register', userObj)
+      .then(res => {
+        setSignedup(true);
+        setSuccessMsg(res.data.message);
+        console.log(res);
+      })
+      .catch(function (error) {
+        const { password } = error.response.data.error
+        setErrMsg({
+          passwordErr: password
+        })
+        console.log(password)
+      })
+  }
+
   return (
-    <Form width="400px">
+    <Form
+      width="400px"
+      id="signup"
+      onSubmit={(e) => handleSubmit(e)}
+    >
       <InputDiv direction="vertical">
-        <InputLabelBase for="first_name">First name*</InputLabelBase>
+        <InputLabelBase for="firstName">First name*</InputLabelBase>
         <InputBase
           type="text"
-          id="first_name"
-          name="first_name"
+          id="firstName"
+          name="firstName"
           direction="vertical"
           placeholder="First name"
-          value={inputs.first_name}
+          value={inputs.firstName}
           inputs={inputs}
           setInputs={setInputs}
           required
         />
       </InputDiv>
       <InputDiv direction="vertical">
-        <InputLabelBase for="last_name">Last name*</InputLabelBase>
+        <InputLabelBase for="lastName">Last name*</InputLabelBase>
         <InputBase
           type="text"
-          id="last_name"
-          name="last_name"
+          id="lastName"
+          name="lastName"
           direction="vertical"
           placeholder="Last name"
-          value={inputs.last_name}
+          value={inputs.lastName}
           inputs={inputs}
           setInputs={setInputs}
           required
         />
       </InputDiv>
       <InputDiv direction="vertical">
-        <InputLabelBase for="last_name">Email address*</InputLabelBase>
+        <InputLabelBase for="lastName">Email address*</InputLabelBase>
         <InputBase
           type="email"
           id="email"
@@ -75,16 +106,21 @@ function SignupFormBase(props) {
         <InputLabelBase for="confirm_password">Confirm password*</InputLabelBase>
         <InputBase
           type="password"
-          id="last_name"
-          name="last_name"
+          id="confirmPassword"
+          name="confirmPassword"
           direction="vertical"
-          placeholder="Password"
-          value={inputs.confirm_password}
+          placeholder="Confirm Password"
+          value={inputs.confirmPassword}
           inputs={inputs}
           setInputs={setInputs}
           required
         />
       </InputDiv>
+      <ButtonBase
+        id="signup"
+        size="medium"
+        type="primary"
+      >Create an account</ButtonBase>
     </Form>
   );
 }
