@@ -15,7 +15,7 @@ function SignupFormBase(props) {
     email: '',
   })
 
-  const { setSignedup, setSuccessMsg, setErrMsg, errMsg } = props;
+  const { setSignedup, setSuccessMsg, setErrMsg } = props;
 
   function handleSubmit(e) {
     e.preventDefault();

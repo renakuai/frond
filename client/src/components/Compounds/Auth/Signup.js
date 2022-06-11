@@ -6,8 +6,6 @@ import { Section } from './Auth.styles'
 
 function Signup() {
 
-  const [user, setUser] = useOutletContext();
-
   const [signedup, setSignedup] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
   const [errMsg, setErrMsg] = useState({

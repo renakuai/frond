@@ -1,5 +1,5 @@
 import React from "react";
-import { MyNavLink, Path } from './Link.styles.js';
+import { MyNavLink } from './Link.styles.js';
 
 
 function NavLinkBase(props) {

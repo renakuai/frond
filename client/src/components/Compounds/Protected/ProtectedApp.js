@@ -8,13 +8,14 @@ import EmptyBase from '../../Atoms/States/Empty/EmptyBase'
 import ErrorBase from '../../Atoms/States/Error/ErrorBase'
 import ButtonBase from '../../Atoms/Buttons/ButtonBase';
 //import { Outlet } from "react-router-dom";
-import CommunityHome from './Community/CommunityHome'
+import Community from './Community/Community'
 
 
 function ProtectedApp() {
   const { user } = useContext(UserContext);
   const [communitiesList, setCommunitiesList] = useState(null);
   const [activeCommunity, setActiveCommunity] = useState('');
+  const [activeTab, setActiveTab] = useState('home');
 
   const { isLoading, isError, data, error } = useQuery('communityList', () => (
     axios.get('http://localhost:9000/api/user/' + localStorage.userId + '/communities', {
@@ -41,7 +42,7 @@ function ProtectedApp() {
 
   return (
     <Grid>
-      {communitiesList && < NavSide communitiesList={communitiesList} activeCommunity={activeCommunity} setActiveCommunity={setActiveCommunity} />}
+      {communitiesList && < NavSide communitiesList={communitiesList} activeCommunity={activeCommunity} setActiveCommunity={setActiveCommunity} activeTab={activeTab} />}
       {!communitiesList &&
         <Div><EmptyBase width="500px" children2="Create a community or join an existing one through an invite to get started." fullPage>
           Looks like you're not part of any communities yet!
@@ -53,7 +54,8 @@ function ProtectedApp() {
             width="300px"
           >Create a community</ButtonBase></Div>}
       <ContentGrid>
-        {communitiesList && <CommunityHome
+        {communitiesList && <Community
+          activeTab={activeTab}
           communitiesList={communitiesList}
           activeCommunity={activeCommunity}
           setActiveCommunity={setActiveCommunity} />}

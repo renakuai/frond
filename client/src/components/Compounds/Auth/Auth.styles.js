@@ -7,5 +7,5 @@ export const Section = styled.section`
   padding: ${Spacing[1]};
   display: flex;
   flex-direction: column;
-  gap: ${Spacing[3]}
+  gap: ${Spacing[2]}
 `

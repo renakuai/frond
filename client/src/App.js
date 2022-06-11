@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { UserContext } from './contexts/UserContext.js';
-import NavSide from './components/Molecules/Nav/Side/NavSide.js';
 import NavTop from './components/Molecules/Nav/Top/NavTop.js';
 import GlobalStyle from './globalStyles/globalStyles.styles';
-import { Outlet, Link } from "react-router-dom";
-import useCheckToken from "./hooks/useCheckToken";
+import { Outlet } from "react-router-dom";
 
 
 function App() {

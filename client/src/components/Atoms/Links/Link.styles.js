@@ -89,6 +89,7 @@ export const MyLink = styled(Link)`
 
 export const MyNavLink = styled(NavLink)`
   width: 100%;
+  color: ${Colors.grey[70]};
   &.active {
     background-color: ${Colors.purple[10]};
     color: ${Colors.purple[50]};
@@ -96,7 +97,6 @@ export const MyNavLink = styled(NavLink)`
     }
   }
   ${LinkStyles};
-  color: ${Colors.grey[70]};
   font-weight: ${Weights.regular};
   &:hover {
     font-weight: ${Weights.semibold};
