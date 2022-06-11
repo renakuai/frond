@@ -48,7 +48,7 @@ function SignupFormBase(props) {
       alignment="end"
     >
       <InputDiv direction="vertical">
-        <InputLabelBase for="firstName">First name*</InputLabelBase>
+        <InputLabelBase forLabel="firstName">First name*</InputLabelBase>
         <InputBase
           type="text"
           id="firstName"
@@ -62,7 +62,7 @@ function SignupFormBase(props) {
         />
       </InputDiv>
       <InputDiv direction="vertical">
-        <InputLabelBase for="lastName">Last name*</InputLabelBase>
+        <InputLabelBase forLabel="lastName">Last name*</InputLabelBase>
         <InputBase
           type="text"
           id="lastName"
@@ -76,7 +76,7 @@ function SignupFormBase(props) {
         />
       </InputDiv>
       <InputDiv direction="vertical">
-        <InputLabelBase for="lastName">Email address*</InputLabelBase>
+        <InputLabelBase forLabel="lastName">Email address*</InputLabelBase>
         <InputBase
           type="email"
           id="email"
@@ -90,7 +90,7 @@ function SignupFormBase(props) {
         />
       </InputDiv>
       <InputDiv direction="vertical">
-        <InputLabelBase for="password">Create a password*</InputLabelBase>
+        <InputLabelBase forLabel="password">Create a password*</InputLabelBase>
         <InputBase
           type="password"
           id="password"
@@ -105,7 +105,7 @@ function SignupFormBase(props) {
         />
       </InputDiv>
       <InputDiv direction="vertical">
-        <InputLabelBase for="confirm_password">Confirm password*</InputLabelBase>
+        <InputLabelBase forLabel="confirm_password">Confirm password*</InputLabelBase>
         <InputBase
           type="password"
           id="confirmPassword"

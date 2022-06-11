@@ -2,7 +2,16 @@ import renderer from 'react-test-renderer';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import ProtectedApp from '../Components/Compounds/Protected.ProtectedApp';
 
-const localStorageMock = (() => {
+
+const localStorageMock = {
+  getItem: jest.fn(),
+  setItem: jest.fn(),
+  removeItem: jest.fn(),
+  clear: jest.fn(),
+};
+global.localStorage = localStorageMock;
+
+const localStorageTest = (() => {
   let store = {};
   return {
     getItem(activeRoute) {

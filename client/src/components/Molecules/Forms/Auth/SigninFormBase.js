@@ -72,7 +72,7 @@ function SigninFormBase(props) {
       alignment="end"
     >
       <InputDiv direction="vertical">
-        <InputLabelBase for="lastName">Email address*</InputLabelBase>
+        <InputLabelBase forLabel="email">Email address*</InputLabelBase>
         <InputBase
           type="email"
           id="email"
@@ -86,7 +86,7 @@ function SigninFormBase(props) {
         />
       </InputDiv>
       <InputDiv direction="vertical">
-        <InputLabelBase for="password">Password*</InputLabelBase>
+        <InputLabelBase forLabel="password">Password*</InputLabelBase>
         <InputBase
           type="password"
           id="password"

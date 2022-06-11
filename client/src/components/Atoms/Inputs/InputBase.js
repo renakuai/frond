@@ -3,12 +3,12 @@ import { Input, Label } from './Input.styles.js'
 
 export function InputLabelBase(props) {
   const {
-    id,
+    forLabel,
     children
   } = props;
 
   return (
-    <Label htmlFor={id}>{children}</Label>
+    <Label htmlFor={forLabel}>{children}</Label>
   )
 }
 

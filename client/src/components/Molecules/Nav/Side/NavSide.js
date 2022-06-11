@@ -25,7 +25,7 @@ function NavSide(props) {
       <H6Base color="purple" nav>My Communities</H6Base>
       <Styles.Ul>
         {communitiesList.map((item, index) => (
-          <Styles.Li key={item._id + 'li'}>
+          <Styles.Li key={item._id + 'li'} data-testid="test-li">
             <NavLinkBase
               key={item._id + 'navlink'}
               id={item._id}
