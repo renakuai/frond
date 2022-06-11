@@ -15,3 +15,10 @@ export const Grid = styled.div`
   justify-content: space-between;
   align-items: center;
 `
+
+export const Div = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+`

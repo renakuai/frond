@@ -7,7 +7,8 @@ function ButtonBase(props) {
     type,
     icon, //boolean
     children,
-    id
+    id,
+    width
   } = props;
 
   return (
@@ -15,6 +16,7 @@ function ButtonBase(props) {
       size={size}
       type={type}
       icon={icon}
+      width={width}
       id={id}>
       <Container>
         {icon && <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">

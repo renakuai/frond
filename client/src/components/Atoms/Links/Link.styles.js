@@ -1,13 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Sizes } from '../Font/Sizes.styles.js';
 import { Weights } from '../Font/Weights.js';
 import { Colors } from '../Colors/Colors.js';
 import { Spacing } from '../Spacing/Spacing.styles.js';
+import { NavLink, Link } from "react-router-dom"
 
 
-export const MyLink = styled.div`
-  font-size: ${props => {
+const LinkStyles = css`
+font-size: ${props => {
     switch (props.size) {
       case ('large'):
         return Sizes.default
@@ -19,8 +20,7 @@ export const MyLink = styled.div`
         break;
     }
   }};
-  font-weight: ${Weights.semibold};
-  background-color: ${props => {
+background-color: ${props => {
     switch (props.type) {
       case ('primary'):
         return Colors.purple[40]
@@ -28,8 +28,50 @@ export const MyLink = styled.div`
         return Colors.white
       case ('tertiary'):
         return Colors.white
+      default:
+        return Colors.white
     }
   }};
+border: ${props => {
+    switch (props.type) {
+      case ('primary'):
+        return 'none'
+      case ('secondary'):
+        return '2px solid' + Colors.purple[20]
+      case ('tertiary'):
+        return 'none'
+      default:
+        return 'none'
+    }
+  }};
+padding: ${Spacing[0.5]} ${Spacing[1]};
+text-decoration: ${props => {
+    switch (props.style) {
+      case ('underline'):
+        return 'underline';
+      default:
+        return 'none'
+    }
+  }};
+border-radius: 4px;
+&:hover {
+  font-weight: ${Weights.semibold};
+  background-color: ${props => {
+    switch (props.type) {
+      case ('primary'):
+        return Colors.purple[60]
+      case ('secondary'):
+        return Colors.purple[10]
+      case ('tertiary'):
+        return Colors.purple[10];
+      default:
+        return Colors.purple[10];
+    }
+  }}
+`
+
+export const MyLink = styled(Link)`
+  font-weight: ${Weights.semibold};
   color: ${props => {
     switch (props.type) {
       case ('primary'):
@@ -38,20 +80,28 @@ export const MyLink = styled.div`
         return Colors.purple[50]
       case ('tertiary'):
         return Colors.purple[50]
+      default:
+        return Colors.purple[50]
     }
   }};
-  border: ${props => {
-    switch (props.type) {
-      case ('primary'):
-        return 'none'
-      case ('secondary'):
-        return '2px solid' + Colors.purple[20]
-      case ('tertiary'):
-        return 'none'
+  ${LinkStyles}
+`
+
+export const MyNavLink = styled(NavLink)`
+  width: 100%;
+  &.active {
+    background-color: ${Colors.purple[10]};
+    color: ${Colors.purple[50]};
+    font-weight: ${Weights.semibold};
     }
-  }};
-  padding: ${Spacing[0.5]} ${Spacing[1]};
-  border-radius: 4px;
+  }
+  ${LinkStyles};
+  color: ${Colors.grey[70]};
+  font-weight: ${Weights.regular};
+  &:hover {
+    font-weight: ${Weights.semibold};
+    color: ${Colors.purple[50]};
+  }
 `
 
 export const Path = styled.path`

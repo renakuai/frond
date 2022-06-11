@@ -113,12 +113,12 @@ UserSchema.methods.generateJWT = function () {
   const today = new Date();
   const expirationDate = new Date(today);
   expirationDate.setDate(today.getDate() + 60);
-
   let payload = {
     id: this._id,
     email: this.email,
     firstName: this.firstName,
     lastName: this.lastName,
+    communities: this.communities,
   };
 
   return jwt.sign(payload, process.env.JWT_SECRET, {

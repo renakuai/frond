@@ -45,6 +45,7 @@ function SignupFormBase(props) {
       width="400px"
       id="signup"
       onSubmit={(e) => handleSubmit(e)}
+      alignment="end"
     >
       <InputDiv direction="vertical">
         <InputLabelBase for="firstName">First name*</InputLabelBase>
@@ -96,6 +97,7 @@ function SignupFormBase(props) {
           name="password"
           direction="vertical"
           placeholder="Password"
+          minLength="6"
           value={inputs.password}
           inputs={inputs}
           setInputs={setInputs}
@@ -108,6 +110,7 @@ function SignupFormBase(props) {
           type="password"
           id="confirmPassword"
           name="confirmPassword"
+          minlength="6"
           direction="vertical"
           placeholder="Confirm Password"
           value={inputs.confirmPassword}
@@ -120,6 +123,7 @@ function SignupFormBase(props) {
         id="signup"
         size="medium"
         type="primary"
+        width="200px"
       >Create an account</ButtonBase>
     </Form>
   );

@@ -4,6 +4,8 @@ const { check } = require('express-validator');
 const auth_controller = require('../controllers/authController');
 const password_controller = require('../controllers/passwordController');
 const validate = require('../middlewares/validate');
+const authorization = require('../middlewares/authorization');
+
 
 const router = express.Router();
 
@@ -27,6 +29,8 @@ router.post('/login', [
   check('password').not().isEmpty(),
 ], validate, auth_controller.login_post);
 
+//logout
+router.get('/logout', authorization, auth_controller.logout_get)
 
 //Email Verification
 router.get('/verify/:token', auth_controller.verify_get);

@@ -1,36 +1,19 @@
 const { nextTick } = require('async')
 const Community = require('../models/community');
-const User = require('../models/community');
+const User = require('../models/user');
 const async = require('async');
 
 
-exports.community_list_get = function (req, res) {
-  async.parallel({
-    personal_friendship: function (callback) {
-      Community.find({ type: 'Personal Friendship' })
-        .sort({ date: 1 })
-        .exec(callback)
-    },
-    personal_family: function (callback) {
-      Community.find({ type: 'Personal Family' })
-        .sort({ date: 1 })
-        .exec(callback)
-    },
-    professional: function (callback) {
-      Community.find({ type: 'Professional' })
-        .sort({ date: 1 })
-        .exec(callback)
-    }
-  }, function (err, communities) {
-    if (err) {
-      return next(err);
-    }
-    res.send({
-      personal_friendship: communities.personal_friendship,
-      personal_family: communities.personal_family,
-      professional: communities.professional
+exports.community_list_get = function (req, res, next) {
+  User.findById(req.params.id)
+    .populate('communities')
+    .exec(function (err, user) {
+      if (err) {
+        return next(err)
+      }
+      res.send(user.communities)
+      console.log(user.communities)
     })
-  })
 }
 
 exports.community_detail_get = function (req, res) {

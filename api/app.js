@@ -9,16 +9,22 @@ const logger = require('morgan');
 const cors = require("cors");
 const passport = require("passport");
 const mongoose = require('mongoose');
+const rateLimit = require('express-rate-limit');
 
-
-const indexRouter = require('./routes/index.js');
-const protectedRouter = require('./routes/protected.js');
-
+//const indexRouter = require('./routes/index.js');
 
 //1. CREATE APP
 const app = express();
+app.use(cookieParser());
 
-app.use(cors());
+//create rate limiting rule
+const apiRequestLimiter = rateLimit({
+  ms: 1 * 60 * 1000,
+  max: 100,
+  message: "Maximum number of tries exceeded. Please try again in a minute."
+})
+
+app.use(cors({ origin: true, credentials: true }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,8 +33,8 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 //2. SETUP DB
 const mongoDB = process.env.MONGO_URL

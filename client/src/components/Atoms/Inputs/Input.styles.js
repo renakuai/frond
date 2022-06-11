@@ -20,7 +20,8 @@ export const Standards = css
 
 export const Label = styled.label`
   font-size: ${Sizes.small};
-  color: ${Colors.grey[50]}
+  color: ${Colors.grey[50]};
+  text-align: left;
 `
 
 export const Input = styled.input.attrs((props) => {

@@ -9,6 +9,7 @@ export const Header = css`
   weight: ${Weights.bold};
   margin: 0;
   line-height: 120%;
+  color: ${Colors.grey[70]}
 `
 export const H1 = styled.h1`
   ${Header}
@@ -40,9 +41,7 @@ export const H6 = styled.h6`
   margin:0;
   line-height: 120%;
   margin-top 1rem;
-  padding: ${props => (
-    props.nav && '0.75rem 0 0 0.5rem'
-  )};
+  padding: 0;
   color: ${props => {
     switch (props.color) {
       case ('purple'):
@@ -62,10 +61,30 @@ export const P = styled.p`
   }}
   line-height: 120%;
   margin:0;
+  color: ${props => {
+    switch (props.color) {
+      case ('purple'):
+        return Colors.purple[60]
+      case ('grey'):
+        return Colors.grey[70]
+      default:
+        return Colors.grey[70];
+    }
+  }}
 `
 
 export const Label = styled.p`
   font-size:  ${Sizes.xsmall};
   line-height: 120%;
   margin:0;
+  color: ${props => {
+    switch (props.color) {
+      case ('purple'):
+        return Colors.purple[60];
+      case ('grey'):
+        return Colors.grey[70];
+      default:
+        return Colors.grey[70];
+    }
+  }}
 `

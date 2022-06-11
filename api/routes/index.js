@@ -1,6 +1,8 @@
 const auth = require('./auth');
 const user = require('./user');
-const authenticate = require('../middlewares/authenticate');
+const invite = require('./invite');
+const content = require('./content');
+const authorization = require('../middlewares/authorization');
 
 
 module.exports = app => {
@@ -11,5 +13,7 @@ module.exports = app => {
   });
 
   app.use('/api/auth', auth);
-  app.use('/api/user', authenticate, user);
+  //app.use('/api/invite', invite);
+  app.use('/api/content', authorization, content);
+  app.use('/api/user', authorization, user);
 };

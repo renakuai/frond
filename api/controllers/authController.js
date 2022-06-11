@@ -42,10 +42,9 @@ exports.register_post = async (req, res) => {
 exports.login_post = async (req, res) => {
   try {
     const { email, password } = req.body;
-
     const user = await User.findOne({
       email
-    });
+    })
 
     if (!user) {
       return res.status(401).json({
@@ -56,7 +55,7 @@ exports.login_post = async (req, res) => {
     //validate password
     if (!user.comparePassword(password)) {
       return res.status(401).json({
-        message: 'Invalid email or password',
+        message: 'Invalid email or password. Please try again.',
         //password: `${password}`
       });
     }
@@ -65,21 +64,34 @@ exports.login_post = async (req, res) => {
     if (!user.isVerified) {
       return res.status(401).json({
         type: 'not-verified',
-        message: 'Your account has not been verified.'
+        message: 'Your account has not been verified yet. Please click on the verification link in your email.'
       });
     }
-
-    // Login successful, write token, and send back user
-    res.status(200).json({
-      token: user.generateJWT(),
-      user: user
-    });
+    // Login successful, create cookie, write token, and send back user
+    const token = user.generateJWT();
+    res.cookie("access_token", token, {
+      httpOnly: true,
+      secure: false,
+      maxAge: 14 * 24 * 3600000
+    })
+      .status(200).json({
+        user: user
+      });
   } catch (error) {
     res.status(500).json({
       message: error.message
     })
   }
 };
+
+//logout
+exports.logout_get = async (req, res) => {
+  return res.clearCookie("access_token")
+    .status(200)
+    .json({
+      message: "Successfully logged out!"
+    })
+}
 
 //@route GET
 //@access Public

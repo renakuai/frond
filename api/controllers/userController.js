@@ -63,7 +63,6 @@ exports.user_create_post = async (req, res) => {
 exports.user_detail_get = async function (req, res) {
   try {
     const id = req.params.id;
-
     const user = await User.findById(id);
 
     if (!user) {

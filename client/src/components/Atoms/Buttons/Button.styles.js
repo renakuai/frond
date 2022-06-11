@@ -1,4 +1,3 @@
-import React, { useContext, useState, useEffect } from "react";
 import styled from 'styled-components';
 import { Sizes } from '../Font/Sizes.styles.js';
 import { Weights } from '../Font/Weights.js';
@@ -52,6 +51,20 @@ export const Button = styled.button`
   }};
   padding: ${Spacing[0.5]} ${Spacing[1]};
   border-radius: 4px;
+  width: ${props => props.width};
+  cursor: pointer;
+  &:hover {
+    background-color: ${props => {
+    switch (props.type) {
+      case ('primary'):
+        return Colors.purple[60]
+      case ('secondary'):
+        return Colors.purple[10]
+      case ('tertiary'):
+        return Colors.purple[10]
+    }
+  }};
+  }
 `
 
 export const Container = styled.div`

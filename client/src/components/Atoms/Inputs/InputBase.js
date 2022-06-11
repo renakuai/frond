@@ -19,7 +19,9 @@ export function InputBase(props) {
     inputs,
     setInputs,
     placeholder,
-    type
+    type,
+    minLength,
+    required
   } = props;
 
   function handleChange(e) {
@@ -35,9 +37,11 @@ export function InputBase(props) {
       id={id}
       name={name}
       onChange={e => handleChange(e)}
+      minLength={minLength}
       inputs={inputs}
       setInputs={setInputs}
       placeholder={placeholder}
+      required={required}
     />
   )
 }

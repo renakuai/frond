@@ -1,29 +1,41 @@
-import React, { useContext, useState, useEffect } from "react";
-import { CommunityContext } from '../../../../contexts/CommunityContext.js';
+import React, { useRef, useEffect } from "react";
+import { UserContext } from '../../../../contexts/UserContext.js';
 import { H6Base } from "../../../Atoms/Font/FontBase.js";
 import * as Styles from './NavSide.styles';
-import ButtonBase from '../../../Atoms/Buttons/ButtonBase.js'
+import ButtonBase from '../../../Atoms/Buttons/ButtonBase.js';
+import NavLinkBase from '../../../Atoms/Links/NavLinkBase.js';
 
 
-function NavSide() {
-  const communities = useContext(CommunityContext);
+function NavSide(props) {
+  const { communitiesList, setActiveCommunity } = props;
+
+  function handleActiveRoute(e) {
+    localStorage.setItem('activeRoute', e.target.id);
+    setActiveCommunity(findCommunity());
+  }
+
+  function findCommunity() {
+    const item = communitiesList.filter(item => item._id === localStorage.activeRoute)
+    return item[0];
+  }
 
   return (
     <Styles.Nav>
       <ButtonBase size="medium" type="secondary" icon={true}>Create a community</ButtonBase>
-      <H6Base color="purple" text="My Personal Communities" nav={true} />
+      <H6Base color="purple" nav>My Communities</H6Base>
       <Styles.Ul>
-        {communities.personal_family.map((group) => (
-          <Styles.Li key={group._id}>{group.name}</Styles.Li>
-        ))}
-        {communities.personal_friendship.map((group) => (
-          <Styles.Li key={group._id}>{group.name}</Styles.Li>
-        ))}
-      </Styles.Ul>
-      <H6Base color="purple" text="My Professional Communities" nav={true} />
-      <Styles.Ul>
-        {communities.professional.map((group) => (
-          <Styles.Li key={group._id}>{group.name}</Styles.Li>
+        {communitiesList.map((item, index) => (
+          <Styles.Li key={item._id + 'li'}>
+            <NavLinkBase
+              key={item._id + 'navlink'}
+              id={item._id}
+              link={'/protected/community/' + item._id}
+              className={({ isActive }) => ((index === 0 || isActive) ? 'active' : 'inactive')}
+              onClick={(e) => handleActiveRoute(e)}>
+              {item.name}
+            </NavLinkBase>
+          </Styles.Li>
+
         ))}
       </Styles.Ul>
     </Styles.Nav>
