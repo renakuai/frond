@@ -12,8 +12,12 @@ function Tabs(props) {
     'home',
     'people',
     'fronds',
-    'shares'
+    'shares',
   ]
+
+  function handleClick(e) {
+    setActiveTab(e.target.id)
+  }
 
   return (
     <Styles.Nav>
@@ -21,11 +25,12 @@ function Tabs(props) {
         {links.map((link, index) => (
           <Styles.Li key={index + 'li'}>
             <NavLinkBase
+              width="fit-content"
               key={link.index + 'navlink'}
               id={link}
-              link={'/protected/community/' + localStorage.activeRoute + '/' + link}
-              className={({ isActive }) => ((link == 'home' || isActive) ? 'active' : 'inactive')}
-            >
+              link={'/protected/community/' + localStorage.activeCommunity}
+              className={activeTab === link && 'active'}
+              onClick={(e) => handleClick(e)}>
               {link[0].toUpperCase() + link.slice(1)}
             </NavLinkBase>
           </Styles.Li>

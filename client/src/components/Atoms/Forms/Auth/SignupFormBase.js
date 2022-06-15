@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { InputBase, InputLabelBase } from '../../../Atoms/Inputs/InputBase'
-import { InputDiv } from './Auth.styles.js'
-import { Form } from '../Form.styles.js'
+import { InputDiv } from '../Form.styles.js'
+import { AuthForm } from '../Form.styles.js'
 import ButtonBase from '../../../Atoms/Buttons/ButtonBase.js';
 import axios from 'axios';
 
@@ -41,7 +41,7 @@ function SignupFormBase(props) {
   }
 
   return (
-    <Form
+    <AuthForm
       width="400px"
       id="signup"
       onSubmit={(e) => handleSubmit(e)}
@@ -125,7 +125,7 @@ function SignupFormBase(props) {
         type="primary"
         width="200px"
       >Create an account</ButtonBase>
-    </Form>
+    </AuthForm>
   );
 }
 

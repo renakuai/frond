@@ -2,37 +2,38 @@ import styled, { css } from 'styled-components'
 import { Sizes } from './Sizes.styles.js'
 import { Weights } from './Weights.js'
 import { Colors } from '../Colors/Colors.js'
+import { Spacing } from '../Spacing/Spacing.styles.js'
 
 
 export const Header = css`
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Mulish', serif;
   weight: ${Weights.bold};
-  margin: 0;
   line-height: 120%;
-  color: ${Colors.grey[70]}
+  color: ${Colors.grey[70]};
+  margin-top: ${Spacing[0.25]};
+  margin-bottom: ${Spacing[0.25]};
 `
 export const H1 = styled.h1`
-  ${Header}
+  ${Header};
   font-size: ${Sizes.xxxlarge};
 `
 export const H2 = styled.h2`
-  ${Header}
+  ${Header};
   font-size:  ${Sizes.xxlarge};
 `
 export const H3 = styled.h3`
-  ${Header}
+  ${Header};
   font-size:  ${Sizes.xlarge};
 `
 export const H4 = styled.h4`
-  ${Header}
+  ${Header};
   font-size:  ${Sizes.large};
 `
 export const H5 = styled.h5`
-  ${Header}
+  ${Header};
   font-size:  ${Sizes.medium};
 `
 export const H6 = styled.h6`
-  font-family: 'Work Sans';
   font-style: normal;
   font-weight: ${Weights.semibold};
   font-size: ${Sizes.xsmall};
@@ -58,15 +59,27 @@ export const P = styled.p`
   font-size: ${props => {
     if (props.size === 'regular') return Sizes.regular
     if (props.size === 'small') return Sizes.small
-  }}
-  line-height: 120%;
-  margin:0;
+  }};
+  font-weight: ${props => {
+    switch (props.weight) {
+      case ('semibold'):
+        return Weights.semibold
+      case ('bold'):
+        return Weights.bold
+      default:
+        return Weights.regular
+    }
+  }};
+  margin-top: 0;
+  margin-top: ${Spacing[0.25]};
+  margin-bottom: ${Spacing[0.25]};
+  line-height: 140%;
   color: ${props => {
     switch (props.color) {
       case ('purple'):
         return Colors.purple[60]
       case ('grey'):
-        return Colors.grey[70]
+        return Colors.grey[50]
       default:
         return Colors.grey[70];
     }
@@ -82,7 +95,7 @@ export const Label = styled.p`
       case ('purple'):
         return Colors.purple[60];
       case ('grey'):
-        return Colors.grey[70];
+        return Colors.grey[50];
       default:
         return Colors.grey[70];
     }

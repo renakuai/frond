@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SignupFormBase from '../../Molecules/Forms/Auth/SignupFormBase.js';
+import SignupFormBase from '../../Atoms/Forms/Auth/SignupFormBase.js';
 import { useOutletContext } from "react-router-dom";
 import { H2Base } from '../../Atoms/Font/FontBase';
 import { Section } from './Auth.styles'

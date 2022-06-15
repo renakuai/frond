@@ -12,7 +12,6 @@ exports.community_list_get = function (req, res, next) {
         return next(err)
       }
       res.send(user.communities)
-      console.log(user.communities)
     })
 }
 

@@ -18,11 +18,18 @@ export const Button = styled.button`
         break;
     }
   }};
-  font-weight: ${Weights.semibold};
+  font-weight: ${props => {
+    if (props.type === 'tertiary') {
+      return Weights.regular
+    }
+    else {
+      return Weights.semibold
+    }
+  }};
   background-color: ${props => {
     switch (props.type) {
       case ('primary'):
-        return Colors.purple[40]
+        return Colors.pink[50]
       case ('secondary'):
         return Colors.white
       case ('tertiary'):
@@ -34,9 +41,9 @@ export const Button = styled.button`
       case ('primary'):
         return Colors.white
       case ('secondary'):
-        return Colors.purple[50]
+        return Colors.pink[50]
       case ('tertiary'):
-        return Colors.purple[50]
+        return Colors.pink[50]
     }
   }};
   border: ${props => {
@@ -44,26 +51,48 @@ export const Button = styled.button`
       case ('primary'):
         return 'none'
       case ('secondary'):
-        return '2px solid' + Colors.purple[20]
+        return '2px solid ' + Colors.pink[20]
       case ('tertiary'):
         return 'none'
     }
   }};
-  padding: ${Spacing[0.5]} ${Spacing[1]};
+  padding: ${props => {
+    switch (props.type) {
+      case ('primary'):
+        return '0.5rem 0.5rem';
+      case ('secondary'):
+        return '0.5rem 0.5rem'
+      case ('tertiary'):
+        return '0.5rem 0 0.5rem 0'
+    }
+  }};
   border-radius: 4px;
   width: ${props => props.width};
   cursor: pointer;
+  text-decoration: ${props => {
+    if (props.type === 'tertiary') {
+      return 'underline'
+    }
+    else {
+      return 'none'
+    }
+  }};
   &:hover {
     background-color: ${props => {
     switch (props.type) {
       case ('primary'):
-        return Colors.purple[60]
+        return Colors.pink[60]
       case ('secondary'):
-        return Colors.purple[10]
+        return Colors.pink[10]
       case ('tertiary'):
-        return Colors.purple[10]
+        return 'none'
     }
   }};
+  color: ${props => {
+    if (props.type === 'tertiary') {
+      return Colors.pink[70]
+    }
+  }}
   }
 `
 
@@ -81,9 +110,10 @@ export const Path = styled.path`
       case ('primary'):
         return Colors.white
       case ('secondary'):
-        return Colors.purple[30]
+        return Colors.pink[50]
       case ('tertiary'):
-        return Colors.purple[30]
+        return Colors.pink[50]
     }
   }}
+  }
 `

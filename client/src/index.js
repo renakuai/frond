@@ -8,6 +8,7 @@ import Signin from './components/Compounds/Auth/Signin';
 import ProtectedApp from './components/Compounds/Protected/ProtectedApp';
 import CommunityHome from './components/Compounds/Protected/Community/Home/CommunityHome';
 import NoPage from './components/Compounds/Error/NoPage';
+import CreateFrond from './components/Compounds/Protected/Community/Fronds/CreateFrond';
 
 
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -27,13 +28,10 @@ root.render(
             <Route path="signup" element={<Signup />} />
             <Route path="signin" element={<Signin />} />
             <Route path="protected" element={<ProtectedApp />}>
-              <Route path="community/:id/home" element={<CommunityHome />} />
-              <Route path="community/:id/people" element={<CommunityHome />} />
-              <Route path="community/:id/fronds" element={<CommunityHome />} />
-              <Route path="community/:id/shares" element={<CommunityHome />} />
-              <Route path="community/" element={<Navigate to="/community/:id/home" />} />
-              <Route path="community/:id" element={<Navigate to="/community/:id/home" />} />
+              <Route path="community/:communityid" element={<CommunityHome />} />
+              <Route path="community" element={<Navigate to=":communityid/home" replace />} />
             </Route>
+            <Route path="protected/community/:communityid/createfrond" element={<CreateFrond />} />
           </Route>
           <Route path="*" element={<NoPage />} />
         </Routes>

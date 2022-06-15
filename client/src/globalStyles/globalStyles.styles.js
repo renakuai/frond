@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
   body {
     margin: 0;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Mulish', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 1rem;

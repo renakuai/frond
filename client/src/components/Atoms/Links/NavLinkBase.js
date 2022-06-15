@@ -9,7 +9,9 @@ function NavLinkBase(props) {
     icon, //boolean
     children,
     link,
-    onClick
+    onClick,
+    className,
+    width
   } = props;
 
   return (
@@ -18,7 +20,9 @@ function NavLinkBase(props) {
       size={size}
       icon={icon}
       to={link}
+      className={className}
       onClick={onClick}
+      width={width}
     >
       {children}
     </MyNavLink>

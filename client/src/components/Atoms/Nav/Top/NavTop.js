@@ -38,9 +38,7 @@ function NavTop() {
       credentials: 'include',
     })
       .then(res => {
-        localStorage.setItem('userId', '')
-        localStorage.setItem('userFirstName', '')
-        window.localStorage.setItem('isLoggedIn', 'false');
+        localStorage.clear();
         nav("/");
         window.location.reload();
       })
@@ -56,7 +54,7 @@ function NavTop() {
     <Nav>
       <Grid>
         <Link to="/"><img src="/Logo.svg"></img></Link>
-        {localStorage.isLoggedIn === 'false' ? <Div>
+        {(localStorage.isLoggedIn === 'false' || !localStorage.isLoggedIn) ? <Div>
           <LinkBase
             size="medium"
             type="tertiary"

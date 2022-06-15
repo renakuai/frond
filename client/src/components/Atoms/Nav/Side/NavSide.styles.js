@@ -10,7 +10,7 @@ export const Nav = styled.nav`
 `
 
 export const Spaces = css`
-  margin: ${Spacing[1]} 0 ${Spacing[1]} 0;
+  margin: 0;
 `
 
 export const Li = styled.li`
@@ -20,7 +20,7 @@ width: 100%;
 
 export const Ul = styled.ul`
   list-style: none;
-  margin: 0;
+  margin: ${Spacing[1]}  0 ${Spacing[1]} 0;
   padding: 0;
   width: 100%;
 `

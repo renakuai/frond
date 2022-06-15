@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { InputBase, InputLabelBase } from '../../../Atoms/Inputs/InputBase'
-import { InputDiv } from './Auth.styles.js'
-import { Form } from '../Form.styles.js'
+import { InputDiv } from '../Form.styles.js'
+import { AuthForm } from '../Form.styles.js'
 import ButtonBase from '../../../Atoms/Buttons/ButtonBase.js';
 import axios from 'axios';
 import { UserContext } from '../../../../contexts/UserContext.js';
@@ -10,8 +10,6 @@ import { useNavigate } from "react-router-dom";
 
 function SigninFormBase(props) {
   const nav = useNavigate();
-
-  const { user, setUser } = useContext(UserContext);
 
   const [inputs, setInputs] = useState({
     password: '',
@@ -65,7 +63,7 @@ function SigninFormBase(props) {
   }
 
   return (
-    <Form
+    <AuthForm
       width="400px"
       id="signup"
       onSubmit={(e) => handleSubmit(e)}
@@ -106,7 +104,7 @@ function SigninFormBase(props) {
         type="primary"
         width="200px"
       >Sign in</ButtonBase>
-    </Form>
+    </AuthForm>
   );
 }
 

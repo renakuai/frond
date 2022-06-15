@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { UserContext } from './contexts/UserContext.js';
-import NavTop from './components/Molecules/Nav/Top/NavTop.js';
+import NavTop from './components/Atoms/Nav/Top/NavTop.js';
 import GlobalStyle from './globalStyles/globalStyles.styles';
 import { Outlet } from "react-router-dom";
 

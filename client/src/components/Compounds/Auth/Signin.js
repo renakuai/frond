@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import SigninFormBase from '../../Molecules/Forms/Auth/SigninFormBase.js';
+import SigninFormBase from '../../Atoms/Forms/Auth/SigninFormBase.js';
 import BannerBase from '../../Atoms/Notifications/Banners/BannerBase.js';
 import { UserContext } from '../../../contexts/UserContext.js';
 import { Navigate } from "react-router-dom";

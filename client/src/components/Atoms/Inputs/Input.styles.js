@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { Sizes } from '../Font/Sizes.styles.js';
 import { Colors } from '../Colors/Colors.js';
 import { Spacing } from '../Spacing/Spacing.styles.js';
+import { Weights } from '../Font/Weights'
 
 export const Standards = css
   `font-size: ${props => {
@@ -20,8 +21,10 @@ export const Standards = css
 
 export const Label = styled.label`
   font-size: ${Sizes.small};
-  color: ${Colors.grey[50]};
+  font-weight: ${Weights.semibold};
+  color: ${Colors.grey[70]};
   text-align: left;
+  margin: 0;
 `
 
 export const Input = styled.input.attrs((props) => {
@@ -36,9 +39,19 @@ export const Input = styled.input.attrs((props) => {
       return 'type: date'
     case ('number'):
       return 'type: number'
-    case ('checkbox'):
-      return 'type: checkbox'
   }
+})
+  `${Standards}
+`
+
+export const InputCheckbox = styled.input.attrs({
+  type: 'checkbox'
+})
+  `${Standards}
+`
+
+export const InputRadio = styled.input.attrs({
+  type: 'radio'
 })
   `${Standards}
 `

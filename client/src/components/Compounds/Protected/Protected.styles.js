@@ -8,6 +8,12 @@ export const Grid = styled.div`
   margin-top: ${Spacing[3]}
 `
 
+export const FrondGrid = styled.div`
+  display: grid;
+  gap: ${Spacing[2]};
+  margin-top: ${Spacing[3]}
+`
+
 export const ContentGrid = styled.div`
   grid-column: 2 / 3;
 `

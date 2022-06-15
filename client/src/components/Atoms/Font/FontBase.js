@@ -66,15 +66,16 @@ export function PBase(props) {
   const {
     color,
     size,
-    children
+    children,
+    weight
   } = props
 
   return (
-    <Font.P color={color} size={size}>{children}</Font.P>
+    <Font.P color={color} size={size} weight={weight}>{children}</Font.P>
   )
 }
 
-export function LabelBase(props) {
+export function PLabelBase(props) {
   const {
     color,
     children
