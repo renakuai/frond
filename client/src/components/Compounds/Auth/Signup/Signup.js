@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import SignupFormBase from '../../Atoms/Forms/Auth/SignupFormBase.js';
-import { useOutletContext } from "react-router-dom";
-import { H2Base } from '../../Atoms/Font/FontBase';
-import { Section } from './Auth.styles'
+import SignupFormBase from './SignupFormBase.js';
+import { H2Base } from '../../../Atoms/Font/FontBase';
+import { Section } from '../Auth.styles'
 
 function Signup() {
 

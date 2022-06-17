@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { InputBase, InputLabelBase } from '../../../Atoms/Inputs/InputBase'
-import { InputDiv } from '../Form.styles.js'
-import { AuthForm } from '../Form.styles.js'
+import { InputDiv, AuthForm } from '../Form.styles.js'
 import ButtonBase from '../../../Atoms/Buttons/ButtonBase.js';
 import axios from 'axios';
 import { UserContext } from '../../../../contexts/UserContext.js';
@@ -101,8 +100,9 @@ function SigninFormBase(props) {
       <ButtonBase
         id="signup"
         size="medium"
-        type="primary"
+        btnType="primary"
         width="200px"
+        submit="true"
       >Sign in</ButtonBase>
     </AuthForm>
   );

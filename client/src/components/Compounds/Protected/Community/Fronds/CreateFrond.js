@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { H3Base } from '../../../../Atoms/Font/FontBase';
 import { FrondGrid } from '../../Protected.styles'
-import CreateFrondBase from '../../../../Atoms/Forms/Fronds/CreateFrondBase'
+import CreateFrondBase from './Forms/CreateFormBase'
 
 function CreateFrond() {
 

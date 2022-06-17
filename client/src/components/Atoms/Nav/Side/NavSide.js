@@ -21,7 +21,7 @@ function NavSide(props) {
 
   return (
     <Styles.Nav>
-      <ButtonBase size="medium" type="secondary" iconName="add">Create a community</ButtonBase>
+      <ButtonBase size="medium" btnType="secondary" iconName="add">Create a community</ButtonBase>
       <H6Base color="grey" nav>My Communities</H6Base>
       <Styles.Ul>
         {communitiesList.map((item, index) => (

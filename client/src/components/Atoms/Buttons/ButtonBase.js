@@ -5,24 +5,28 @@ import { Icons } from '../Icons/Icons'
 function ButtonBase(props) {
   const {
     size,
-    type,
+    btnType,
     children,
     id,
     width,
-    iconName
+    iconName,
+    type,
+    onClick
   } = props;
 
 
   return (
     <Button
       size={size}
-      type={type}
+      btnType={btnType}
       width={width}
       id={id}
+      type={type}
+      onClick={onClick}
     >
       <Container>
         {iconName && <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <Path d={Icons[iconName]} type={type} />
+          <Path d={Icons[iconName]} btnType={btnType} />
         </svg>}
         {children}
       </Container>

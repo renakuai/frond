@@ -122,8 +122,9 @@ function SignupFormBase(props) {
       <ButtonBase
         id="signup"
         size="medium"
-        type="primary"
+        btnType="primary"
         width="200px"
+        submit="true"
       >Create an account</ButtonBase>
     </AuthForm>
   );

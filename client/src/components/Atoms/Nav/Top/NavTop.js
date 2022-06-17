@@ -59,12 +59,13 @@ function NavTop() {
             size="medium"
             type="tertiary"
             link="signin"
-            icon={false}>Sign in</LinkBase>
+            underline="true"
+          >Sign in</LinkBase>
           <LinkBase
             size="medium"
             type="primary"
             link="signup"
-            icon={false}>Sign up</LinkBase>
+          >Sign up</LinkBase>
         </Div>
           : <Div>
             <svg width="36" height="36">

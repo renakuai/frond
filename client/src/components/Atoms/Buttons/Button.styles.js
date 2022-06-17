@@ -3,9 +3,11 @@ import { Sizes } from '../Font/Sizes.styles.js';
 import { Weights } from '../Font/Weights.js';
 import { Colors } from '../Colors/Colors.js';
 import { Spacing } from '../Spacing/Spacing.styles.js';
+import { Shadows } from '../Shadows/Shadows.js';
 
 
-export const Button = styled.button`
+export const Button = styled.button
+  `
   font-size: ${props => {
     switch (props.size) {
       case ('large'):
@@ -18,18 +20,11 @@ export const Button = styled.button`
         break;
     }
   }};
-  font-weight: ${props => {
-    if (props.type === 'tertiary') {
-      return Weights.regular
-    }
-    else {
-      return Weights.semibold
-    }
-  }};
+  font-weight: ${Weights.regular};
   background-color: ${props => {
-    switch (props.type) {
+    switch (props.btnType) {
       case ('primary'):
-        return Colors.pink[50]
+        return Colors.grey[70]
       case ('secondary'):
         return Colors.white
       case ('tertiary'):
@@ -37,41 +32,40 @@ export const Button = styled.button`
     }
   }};
   color: ${props => {
-    switch (props.type) {
+    switch (props.btnType) {
       case ('primary'):
         return Colors.white
       case ('secondary'):
-        return Colors.pink[50]
+        return Colors.grey[60]
       case ('tertiary'):
-        return Colors.pink[50]
+        return Colors.grey[60]
     }
   }};
-  border: ${props => {
-    switch (props.type) {
-      case ('primary'):
-        return 'none'
-      case ('secondary'):
-        return '2px solid ' + Colors.pink[20]
-      case ('tertiary'):
-        return 'none'
-    }
-  }};
+  border: none;
   padding: ${props => {
-    switch (props.type) {
+    switch (props.btnType) {
       case ('primary'):
-        return '0.5rem 0.5rem';
+        return '0.5rem 1rem';
       case ('secondary'):
-        return '0.5rem 0.5rem'
+        return '0.5rem 1rem'
       case ('tertiary'):
         return '0.5rem 0 0.5rem 0'
     }
   }};
-  border-radius: 4px;
+  border-radius: 100px;
   width: ${props => props.width};
   cursor: pointer;
   text-decoration: ${props => {
-    if (props.type === 'tertiary') {
+    if (props.btnType === 'tertiary') {
       return 'underline'
+    }
+    else {
+      return 'none'
+    }
+  }};
+  box-shadow: ${props => {
+    if (props.btnType === 'secondary') {
+      return Shadows.default;
     }
     else {
       return 'none'
@@ -79,18 +73,28 @@ export const Button = styled.button`
   }};
   &:hover {
     background-color: ${props => {
-    switch (props.type) {
+    switch (props.btnType) {
       case ('primary'):
-        return Colors.pink[60]
+        return Colors.black
       case ('secondary'):
-        return Colors.pink[10]
+        return Colors.white
       case ('tertiary'):
+        return 'none'
+      default:
         return 'none'
     }
   }};
+box-shadow: ${props => {
+    if (props.btnType === 'secondary') {
+      return Shadows.hover;
+    }
+    else {
+      return 'none'
+    }
+  }};
   color: ${props => {
-    if (props.type === 'tertiary') {
-      return Colors.pink[70]
+    if (props.btnType === 'tertiary') {
+      return Colors.black
     }
   }}
   }
@@ -106,13 +110,13 @@ export const Container = styled.div`
 
 export const Path = styled.path`
   fill: ${props => {
-    switch (props.type) {
+    switch (props.btnType) {
       case ('primary'):
         return Colors.white
       case ('secondary'):
-        return Colors.pink[50]
+        return Colors.grey[60]
       case ('tertiary'):
-        return Colors.pink[50]
+        return Colors.grey[60]
     }
   }}
   }
