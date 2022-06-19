@@ -6,8 +6,6 @@ import { Spacing } from '../../Spacing/Spacing.styles.js';
 
 
 export const Banner = styled.div`
-  font-size: ${Sizes.default};
-  font-weight: ${Weights.semibold};
   background-color: ${props => {
     switch (props.type) {
       case ('success'):
@@ -34,12 +32,11 @@ export const Banner = styled.div`
   }};
   padding: ${Spacing[1]} ${Spacing[1.5]} ${Spacing[1]} ${Spacing[1.5]};
   border-radius: 4px;
-  width: ${props => props.width};
   margin-left: auto;
   margin-right: auto;
 `
 
-export const Div = styled.div`
+export const ContentDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: ${props => {
@@ -49,6 +46,20 @@ export const Div = styled.div`
   ;
   text-align: left;
   align-items: center;
+`
+export const ContainerDiv = styled.div`
+width: ${props => props.width};
+`
+
+export const TextDiv = styled.div`
+font-size: ${Sizes.small};
+display: flex;
+flex-direction: column;
+`
+export const TitleDiv = styled.div`
+font-size: ${Sizes.default};
+font-weight: ${Weights.semibold};
+margin-bottom: ${Spacing[0.5]};
 `
 
 

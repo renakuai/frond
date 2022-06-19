@@ -10,19 +10,19 @@ const comment_controller = require('../controllers/commentController');
 
 
 //GET list of all groups
-router.get('/communities', community_controller.community_list_get)
+router.get('/', community_controller.community_list_get)
 
 //GET individual group
-router.get('/communities/:id', community_controller.community_detail_get)
+router.get('/:id', community_controller.community_detail_get)
 
-//GET list of all users
-router.get('/communities/users', user_controller.user_list_get)
+//GET list of all users in a community
+router.get('/:id/users', community_controller.user_list_get)
 
 //GET individual user
-router.get('/communities/users/:id', user_controller.user_detail_get)
+router.get('/users/:id', user_controller.user_detail_get)
 
 //GET list of all fronds
-router.get('/communities/fronds', frond_controller.frond_list_get)
+router.get('/fronds', frond_controller.frond_list_get)
 
 //GET individual user
 router.get('/communities/fronds/:id', frond_controller.frond_detail_get)

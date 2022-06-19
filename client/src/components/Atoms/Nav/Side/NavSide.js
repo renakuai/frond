@@ -23,7 +23,7 @@ function NavSide(props) {
     <Styles.Nav>
       <ButtonBase size="medium" btnType="secondary" iconName="add">Create a community</ButtonBase>
       <H6Base color="grey" nav>My Communities</H6Base>
-      <Styles.Ul>
+      {communitiesList && <Styles.Ul>
         {communitiesList.map((item, index) => (
           <Styles.Li key={item._id + 'li'} data-testid="test-li">
             <NavLinkBase
@@ -37,7 +37,7 @@ function NavSide(props) {
           </Styles.Li>
 
         ))}
-      </Styles.Ul>
+      </Styles.Ul>}
     </Styles.Nav>
   );
 }

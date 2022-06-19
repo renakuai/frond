@@ -1,6 +1,6 @@
 import React from "react";
 import { ModalForm, ButtonDiv } from './AddQuestionFormBase.styles';
-import ButtonBase from '../../../../../Atoms/Buttons/ButtonBase'
+import ButtonBase from '../../../../../../Atoms/Buttons/ButtonBase'
 
 function AddQuestionFormBase(props) {
 

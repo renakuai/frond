@@ -6,11 +6,20 @@ export const FormStyles = css`
   display: flex;
   flex-direction: column;
   gap: ${Spacing[1]};
-  width: ${props => {
+  width: 100%;
+  max-width: ${props => {
     return props.width
   }};
   align-items: ${props => props.alignment};
   background: #FFFFFF;
+`
+export const AuthForm = styled.form`
+  ${FormStyles};
+  padding: ${Spacing[1.5]};
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 1px 2px 16px rgba(141, 141, 141, 0.25);
+  border-radius: 8px;
 `
 
 export const CreateForm = styled.form`
@@ -38,14 +47,15 @@ export const InputDiv = styled.div`
     }
   }};
 `
-
 export const QuestionDiv = styled.div`
-  height: 500px;
-  width: 100%;
+  height: 200px;
+  width: inherit;
+  box-sizing: border-box;
   overflow-y: scroll;
   overflow-x: hidden;
-  border: 1px solid ${Colors.grey[10]};
+  border: 2px solid ${Colors.grey[20]};
+  border-radius: 4px;
   padding: ${Spacing[1]};
   margin-top: ${Spacing[0.5]};
-  margin-bottom: ${Spacing[0.5]};
+  margin-bottom: ${Spacing[1]};
 `

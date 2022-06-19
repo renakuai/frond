@@ -15,6 +15,17 @@ exports.community_list_get = function (req, res, next) {
     })
 }
 
+exports.user_list_get = function (req, res, next) {
+  Community.findById(req.params.id)
+    .populate('members', { 'firstName': 1, 'lastName': 1, 'email': 1, '_id': 1 })
+    .exec(function (err, data) {
+      if (err) {
+        return next(err)
+      }
+      res.send(data.members)
+    })
+}
+
 exports.community_detail_get = function (req, res) {
   res.send('Not implemented: community Detail: ' + req.params.id)
 }

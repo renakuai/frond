@@ -7,7 +7,8 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 1rem;
-    box-sizing: border-box
+    box-sizing: border-box;
+    margin-bottom: 4rem;
   }
 
   .Grid {

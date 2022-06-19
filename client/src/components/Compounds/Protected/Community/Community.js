@@ -21,7 +21,7 @@ function Community(props) {
   }
 
   return (
-    < section >
+    <section>
       {activeCommunity && <H3Base>{activeCommunity.name}</H3Base>}
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab === 'fronds' && <Fronds />}

@@ -20,7 +20,7 @@ export const Button = styled.button
         break;
     }
   }};
-  font-weight: ${Weights.regular};
+  font-weight: ${Weights.semibold};
   background-color: ${props => {
     switch (props.btnType) {
       case ('primary'):
@@ -45,24 +45,17 @@ export const Button = styled.button
   padding: ${props => {
     switch (props.btnType) {
       case ('primary'):
-        return '0.5rem 1rem';
+        return '0.6rem 1.1rem';
       case ('secondary'):
-        return '0.5rem 1rem'
+        return '0.6rem 1.1rem'
       case ('tertiary'):
         return '0.5rem 0 0.5rem 0'
     }
   }};
-  border-radius: 100px;
+  border-radius: 8px;
   width: ${props => props.width};
   cursor: pointer;
-  text-decoration: ${props => {
-    if (props.btnType === 'tertiary') {
-      return 'underline'
-    }
-    else {
-      return 'none'
-    }
-  }};
+  text-decoration: none;
   box-shadow: ${props => {
     if (props.btnType === 'secondary') {
       return Shadows.default;
@@ -82,6 +75,14 @@ export const Button = styled.button
         return 'none'
       default:
         return 'none'
+    }
+  }};
+  text-decoration: ${props => {
+    if (props.btnType === 'tertiary') {
+      return 'underline'
+    }
+    else {
+      return 'none'
     }
   }};
 box-shadow: ${props => {

@@ -49,77 +49,6 @@ export function InputBase(props) {
   )
 }
 
-export function InputCheckboxBase(props) {
-  const {
-    id,
-    name,
-    inputs,
-    setInputs,
-    type,
-    limit,
-    limitedKey
-  } = props;
-
-  function handleChange(e) {
-    const tgt = e.target.id;
-    if (type === 'boolean') {
-      if (inputs[tgt]) {
-        setInputs({
-          ...inputs,
-          [e.target.name]: false,
-        });
-      }
-      else {
-        setInputs({
-          ...inputs,
-          [e.target.name]: true,
-        });
-      }
-    }
-    if (type === 'multiple') {
-      if (inputs[e.target.name].includes(e.target.id)) {
-        const filtered = inputs[e.target.name].filter((i) => i !== e.target.id);
-        setInputs({
-          ...inputs,
-          [e.target.name]: filtered,
-        });
-      }
-      else {
-        setInputs({
-          ...inputs,
-          [e.target.name]: [...inputs[e.target.name], (e.target.id)],
-        });
-      }
-    }
-    else {
-      if (inputs[e.target.name]) {
-        setInputs({
-          ...inputs,
-          [e.target.name]: '',
-        });
-      }
-      else {
-        setInputs({
-          ...inputs,
-          [e.target.name]: e.target.id,
-        });
-      }
-    }
-  }
-
-
-  return (
-    <InputCheckbox
-      type={type}
-      id={id}
-      name={name}
-      onChange={e => handleChange(e)}
-      inputs={inputs}
-      setInputs={setInputs}
-      disabled={((inputs[name].length === +limit) && (!inputs[name].includes(id))) ? true : null}
-    />
-  )
-}
 
 export function InputRadioBase(props) {
   const {
@@ -136,6 +65,7 @@ export function InputRadioBase(props) {
       [e.target.name]: e.target.id,
     })
   }
+
 
   return (
     <InputRadio

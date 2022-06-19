@@ -31,6 +31,7 @@ function ProtectedApp() {
           localStorage.setItem('activeCommunity', res.data[0]._id);
           return;
         }
+        return
       })
   ))
 
@@ -44,9 +45,10 @@ function ProtectedApp() {
     </ErrorBase>
   }
 
+
   return (
     <Grid>
-      {localStorage.activeCommunity && < NavSide communitiesList={communitiesList} activeCommunity={activeCommunity} setActiveCommunity={setActiveCommunity} activeTab={activeTab} />}
+      {(localStorage.activeCommunity && communitiesList) && < NavSide communitiesList={communitiesList} activeCommunity={activeCommunity} setActiveCommunity={setActiveCommunity} activeTab={activeTab} />}
       {!localStorage.activeCommunity &&
         <Div><EmptyBase width="500px" children2="Create a community or join an existing one through an invite to get started." fullPage>
           Looks like you're not part of any communities yet!
@@ -58,7 +60,7 @@ function ProtectedApp() {
             width="300px"
           >Create a community</ButtonBase></Div>}
       <ContentGrid>
-        {localStorage.activeCommunity && <Community
+        {(localStorage.activeCommunity && communitiesList) && <Community
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           communitiesList={communitiesList}

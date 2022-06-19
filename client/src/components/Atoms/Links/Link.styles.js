@@ -46,9 +46,10 @@ box-shadow: ${props => {
       return 'none'
     }
   }};
+  text-decoration: none;
 width: ${props => props.width};
 padding: ${Spacing[0.5]} ${Spacing[1]};
-border-radius: 100px;
+border-radius: 8px;
 &:hover {
   box-shadow: ${props => {
     if (props.type === 'secondary') {
@@ -74,14 +75,6 @@ border-radius: 100px;
 
 export const MyLink = styled(Link)`
   font-weight: ${Weights.regular};
-  text-decoration: ${props => {
-    if (props.underline) {
-      return 'underline';
-    }
-    else {
-      return 'none'
-    }
-  }};
   color: ${props => {
     switch (props.type) {
       case ('primary'):
@@ -99,17 +92,17 @@ export const MyLink = styled(Link)`
     if (props.type === "tertiary") {
       return Colors.black
     }
-  }}
-  };
-  &:active, &:visited, &:focus, &:link {
+  }};
     text-decoration: ${props => {
-    if (props.underline) {
-      return 'underline';
+    if (props.type === 'tertiary') {
+      return 'underline'
     }
     else {
       return 'none'
     }
   }};
+  };
+  &:active, &:visited, &:focus, &:link {
     color: ${props => {
     switch (props.type) {
       case ('primary'):
@@ -128,9 +121,9 @@ export const MyLink = styled(Link)`
 `
 
 export const MyNavLink = styled(Link)`
-text-decoration: ${props => {
-    if (props.underline) {
-      return 'underline';
+  text-decoration: ${props => {
+    if (props.type === 'tertiary') {
+      return 'underline'
     }
     else {
       return 'none'
