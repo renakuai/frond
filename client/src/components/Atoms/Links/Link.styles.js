@@ -28,7 +28,7 @@ font-size: ${props => {
 background-color: ${props => {
     switch (props.type) {
       case ('primary'):
-        return Colors.grey[70]
+        return Colors.jade[30]
       case ('secondary'):
         return Colors.white
       case ('tertiary'):
@@ -48,8 +48,7 @@ box-shadow: ${props => {
   }};
   text-decoration: none;
 width: ${props => props.width};
-padding: ${Spacing[0.5]} ${Spacing[1]};
-border-radius: 8px;
+border-radius: 4px;
 &:hover {
   box-shadow: ${props => {
     if (props.type === 'secondary') {
@@ -62,9 +61,9 @@ border-radius: 8px;
   background-color: ${props => {
     switch (props.type) {
       case ('primary'):
-        return Colors.black
+        return Colors.jade[40]
       case ('secondary'):
-        return Colors.white
+        return Colors.cyan[10]
       case ('tertiary'):
         return 'none'
       default:
@@ -74,25 +73,37 @@ border-radius: 8px;
 `
 
 export const MyLink = styled(Link)`
-  font-weight: ${Weights.regular};
+  font-weight: ${props => {
+    if (props.type === 'tertiary') {
+      return Weights.regular
+    }
+    if (props.type === 'secondary') {
+      return Weights.semibold
+    }
+  }};
+padding: ${props => {
+    switch (props.type) {
+      case ('primary'):
+        return '0.55rem 1.1rem';
+      case ('secondary'):
+        return '0.55rem 1.1rem'
+      case ('tertiary'):
+        return '0.5rem 0 0.5rem 0'
+    }
+  }};
   color: ${props => {
     switch (props.type) {
       case ('primary'):
         return Colors.white
       case ('secondary'):
-        return Colors.grey[60]
+        return Colors.jade[40]
       case ('tertiary'):
-        return Colors.grey[60]
+        return Colors.jade[40]
       default:
         return Colors.white
     }
   }};
   &:hover {
-    color: ${props => {
-    if (props.type === "tertiary") {
-      return Colors.black
-    }
-  }};
     text-decoration: ${props => {
     if (props.type === 'tertiary') {
       return 'underline'
@@ -108,9 +119,9 @@ export const MyLink = styled(Link)`
       case ('primary'):
         return Colors.white
       case ('secondary'):
-        return Colors.grey[60]
+        return Colors.jade[40]
       case ('tertiary'):
-        return Colors.grey[60]
+        return Colors.jade[40]
       default:
         return Colors.white
     }
@@ -121,6 +132,7 @@ export const MyLink = styled(Link)`
 `
 
 export const MyNavLink = styled(Link)`
+  padding: ${Spacing[0.5]} ${Spacing[1]};
   text-decoration: ${props => {
     if (props.type === 'tertiary') {
       return 'underline'
@@ -131,15 +143,13 @@ export const MyNavLink = styled(Link)`
   }};
   color: ${Colors.grey[60]};
   &.active {
-    border-radius: 8px;
     background-color: ${Colors.grey[10]};
-    color: ${Colors.grey[60]};
+    color: ${Colors.jade[40]};
   };
   font-weight: ${Weights.regular};
   &:hover {
     border-radius: 8px;
-    color: ${Colors.black};
-    background-color: ${Colors.grey[10]};
+    color: ${Colors.jade[30]};
   };
   ${LinkStyles};
 `
@@ -150,9 +160,9 @@ export const Path = styled.path`
       case ('primary'):
         return Colors.white
       case ('secondary'):
-        return Colors.grey[60]
+        return Colors.jade[30]
       case ('tertiary'):
-        return Colors.grey[60]
+        return Colors.jade[30]
     }
   }}
 `

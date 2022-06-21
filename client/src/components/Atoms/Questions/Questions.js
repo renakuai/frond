@@ -22,9 +22,8 @@ export const Questions = [
   "What is the most useless talent you have?",
   "What is a random fact that you know that most people wouldn’t know?",
   "What is the most ridiculous thing you’ve tricked someone into believing?",
-  "What is the dumbest way that you’ve injured yourself?",
+  "What is the silliest way that you’ve injured yourself?",
   "How long would you last in a zombie apocalypse?",
-  "Who was your childhood actor / actress crush?",
   "If you won a lottery of $1 million, what would you do with all the money?",
   "What’s the worst haircut you ever had?"
 ]

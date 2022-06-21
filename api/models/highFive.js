@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UpdateSchema = new Schema(
+const HighFiveSchema = new Schema(
   {
-    content: {
+    message: {
       type: String,
       required: true,
       maxLength: 500
     },
-    img: {
-      type: String,
-      maxLength: 150
+    recipient: {
+      type: Schema.Types.ObjectID,
+      ref: 'User'
     },
     author: {
       type: Schema.Types.ObjectID,
@@ -23,5 +23,4 @@ const UpdateSchema = new Schema(
   }
 )
 
-
-module.exports = mongoose.model('Update', UpdateSchema)
+module.exports = mongoose.model('HighFive', HighFiveSchema)

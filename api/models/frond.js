@@ -3,48 +3,51 @@ const Schema = mongoose.Schema;
 
 const FrondSchema = new Schema(
   {
-    subject: {
+    name: {
       type: String,
       required: true,
-      maxLength: 100
+      maxLength: 50
     },
     message: {
       type: String,
-      required: true,
-      maxLength: 100
+      maxLength: 150
     },
     recipients: [{
       type: Schema.Types.ObjectID,
       ref: 'User'
     }],
     questions: [{
-      type: Schema.Types.ObjectID,
-      ref: 'Question'
+      type: String,
+      required: true,
     }],
     updates: [{
       type: Schema.Types.ObjectID,
       ref: 'Update'
     }],
+    highFives: [{
+      type: Schema.Types.ObjectID,
+      ref: 'HighFive'
+    }],
+    shares: [{
+      type: Schema.Types.ObjectID,
+      ref: 'Share'
+    }],
     dateCreated: {
       type: Date,
       default: Date.now
     },
-    firstSendDate: {
+    dateStart: {
       type: Date,
-      default: Date.now
     },
-    sendFrequency: {
+    recurring: {
       type: String,
-      required: true,
-      enum: ['Weekly', 'Biweekly', 'Monthly', 'One-time']
+    },
+    cadence: {
+      type: String,
+      enum: ['Weekly', 'Biweekly', '']
     },
   }
 )
 
-//virtual for user's URL
-FrondSchema.virtual('url')
-  .get(function () {
-    return '/fronds/' + this._id;
-  })
 
 module.exports = mongoose.model('Frond', FrondSchema)

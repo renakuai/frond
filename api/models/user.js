@@ -41,7 +41,7 @@ const UserSchema = new Schema(
     },
     resetPasswordExpires: {
       type: Date,
-      required: false,
+      required: false
     },
     profileImg: {
       type: String,
@@ -77,12 +77,6 @@ const UserSchema = new Schema(
     },
   }
 )
-
-//virtual for user's URL
-UserSchema.virtual('url')
-  .get(function () {
-    return '/users/' + this._id;
-  })
 
 
 //hashing password before saving

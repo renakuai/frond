@@ -8,6 +8,7 @@ import { Shadows } from '../Shadows/Shadows.js';
 
 export const Button = styled.button
   `
+  font-family: 'Karla', sans-serif;
   font-size: ${props => {
     switch (props.size) {
       case ('large'):
@@ -20,11 +21,18 @@ export const Button = styled.button
         break;
     }
   }};
-  font-weight: ${Weights.semibold};
+  font-weight: ${props => {
+    if (props.type === 'tertiary') {
+      return Weights.regular
+    }
+    if (props.btnType === 'secondary') {
+      return Weights.semibold
+    }
+  }};
   background-color: ${props => {
     switch (props.btnType) {
       case ('primary'):
-        return Colors.grey[70]
+        return Colors.jade[30]
       case ('secondary'):
         return Colors.white
       case ('tertiary'):
@@ -36,41 +44,33 @@ export const Button = styled.button
       case ('primary'):
         return Colors.white
       case ('secondary'):
-        return Colors.grey[60]
+        return Colors.jade[40]
       case ('tertiary'):
-        return Colors.grey[60]
+        return Colors.jade[40]
     }
   }};
-  border: none;
+  border: ${props => (props.btnType === 'secondary') ? ('2px solid' + Colors.grey[20]) : 'none'};
   padding: ${props => {
     switch (props.btnType) {
       case ('primary'):
-        return '0.6rem 1.1rem';
+        return '0.55rem 1.1rem';
       case ('secondary'):
-        return '0.6rem 1.1rem'
+        return '0.55rem 1.1rem'
       case ('tertiary'):
         return '0.5rem 0 0.5rem 0'
     }
   }};
-  border-radius: 8px;
+  border-radius: 4px;
   width: ${props => props.width};
   cursor: pointer;
   text-decoration: none;
-  box-shadow: ${props => {
-    if (props.btnType === 'secondary') {
-      return Shadows.default;
-    }
-    else {
-      return 'none'
-    }
-  }};
   &:hover {
     background-color: ${props => {
     switch (props.btnType) {
       case ('primary'):
-        return Colors.black
+        return Colors.jade[40]
       case ('secondary'):
-        return Colors.white
+        return Colors.cyan[10]
       case ('tertiary'):
         return 'none'
       default:
@@ -85,17 +85,9 @@ export const Button = styled.button
       return 'none'
     }
   }};
-box-shadow: ${props => {
-    if (props.btnType === 'secondary') {
-      return Shadows.hover;
-    }
-    else {
-      return 'none'
-    }
-  }};
   color: ${props => {
     if (props.btnType === 'tertiary') {
-      return Colors.black
+      return Colors.jade[40]
     }
   }}
   }

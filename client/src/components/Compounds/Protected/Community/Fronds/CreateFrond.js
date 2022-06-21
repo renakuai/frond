@@ -12,6 +12,13 @@ function CreateFrond() {
 
   const [communityMembers, setCommunityMembers] = useState();
 
+  const [loading, setLoading] = useState(false);
+  const [dataSent, setDataSent] = useState(false);
+  const [submitErr, setSubmitErr] = useState({
+    state: false,
+    message: ''
+  });
+
   const { isLoading, isError, data, error } = useQuery('communityMembers', () => (
     axios.get('http://localhost:9000/api/communities/' + localStorage.activeCommunity + '/users', {
       withCredentials: true,
@@ -32,8 +39,26 @@ function CreateFrond() {
     </ErrorBase>
   }
 
+  const submitData = {
+    loading,
+    setLoading,
+    dataSent,
+    setDataSent,
+    submitErr,
+    setSubmitErr
+  }
+
+  if (loading) {
+    return 'Loading'
+  }
+
+  if (dataSent) {
+    return 'Data sent'
+  }
+
   return (
     <section>
+
       <FrondGrid>
         <H3Base>Create a Frond</H3Base>
         <BannerBase
@@ -44,7 +69,7 @@ function CreateFrond() {
           Fronds are email newsletters that help your group develop deeper, more meaningful connections.
           <P>Fronds consist of a few curated questions for people to respond to and sections for: ✋ high fives, 🆕 life updates, and sharing of 💡 interesting findings and links. Every recipient will be able to submit their responses and a newsletter of these shares will be sent to everyone on the scheduled date.</P>
         </BannerBase>
-        {communityMembers && <CreateFrondBase communityMembers={communityMembers} />}
+        {communityMembers && <CreateFrondBase communityMembers={communityMembers} submitData={submitData} />}
       </FrondGrid>
     </section>
   );

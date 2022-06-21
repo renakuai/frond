@@ -7,42 +7,16 @@ const question_controller = require('../controllers/questionController');
 const update_controller = require('../controllers/updateController');
 const answer_controller = require('../controllers/answerController');
 const comment_controller = require('../controllers/commentController');
-
-
-//GET list of all groups
-router.get('/', community_controller.community_list_get)
+const validate = require('../middlewares/validate');
+const authorizeGroup = require('../middlewares/authorizeGroup');
 
 //GET individual group
 router.get('/:id', community_controller.community_detail_get)
 
-//GET list of all users in a community
-router.get('/:id/users', community_controller.user_list_get)
+//GET users in group
+router.get('/:id/users', authorizeGroup, community_controller.user_list_get);
 
-//GET individual user
-router.get('/users/:id', user_controller.user_detail_get)
-
-//GET list of all fronds
-router.get('/fronds', frond_controller.frond_list_get)
-
-//GET individual user
-router.get('/communities/fronds/:id', frond_controller.frond_detail_get)
-
-//GET list of all questions
-router.get('/communities/questions', question_controller.question_list_get)
-
-//GET individual question
-router.get('/communities/questions/:id', question_controller.question_detail_get)
-
-//GET list of all answers
-router.get('/communities/answers', answer_controller.answer_list_get)
-
-//GET list of all shares
-router.get('/communities/updates', update_controller.update_list_get)
-
-//GET individual share
-router.get('/communities/updates/:id', update_controller.update_detail_get)
-
-//GET list of all comments
-router.get('/communities/comments', comment_controller.comment_list_get)
+//POST frond form response
+router.post('/:id/fronds/create', authorizeGroup, frond_controller.create_frond_post);
 
 module.exports = router;

@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UpdateSchema = new Schema(
+const ShareSchema = new Schema(
   {
-    content: {
+    message: {
       type: String,
       required: true,
       maxLength: 500
     },
-    img: {
+    link: {
       type: String,
       maxLength: 150
     },
@@ -23,5 +23,4 @@ const UpdateSchema = new Schema(
   }
 )
 
-
-module.exports = mongoose.model('Update', UpdateSchema)
+module.exports = mongoose.model('Share', ShareSchema)

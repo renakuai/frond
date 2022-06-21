@@ -29,4 +29,15 @@ function sendEmail(mailOptions) {
   })
 }
 
-module.exports = { sendEmail, uploader }
+function sendMultipleEmails(mailOptions) {
+  return new Promise((resolve, reject) => {
+    sgMail.sendMultiple(mailOptions, (error, result) => {
+      if (error) {
+        return reject(error)
+      }
+      return resolve(result);
+    })
+  })
+}
+
+module.exports = { sendEmail, uploader, sendMultipleEmails }

@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import LinkBase from '../../../../Atoms/Links/LinkBase.js';
-
+import { SectionDiv } from '../../Protected.styles'
 
 function Fronds() {
   console.log('create')
   return (
-    <section>
+    <SectionDiv>
       <LinkBase
         width="fit-content"
-        size="medium"
+        size="large"
         type="primary"
         icon="add"
         link={'/protected/community/' + localStorage.activeCommunity + '/createfrond'}
       >Create a Frond</LinkBase>
-    </section>
+    </SectionDiv>
   );
 }
 

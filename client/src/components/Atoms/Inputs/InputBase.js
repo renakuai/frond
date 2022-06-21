@@ -23,7 +23,10 @@ export function InputBase(props) {
     type,
     minLength,
     required,
-    value
+    value,
+    min,
+    maxlength,
+    err
   } = props;
 
   function handleChange(e) {
@@ -32,6 +35,8 @@ export function InputBase(props) {
       [e.target.name]: e.target.value,
     })
   }
+
+
 
   return (
     <Input
@@ -45,6 +50,9 @@ export function InputBase(props) {
       placeholder={placeholder}
       required={required}
       value={value}
+      min={min}
+      maxlength={maxlength}
+      err={err}
     />
   )
 }
@@ -56,7 +64,8 @@ export function InputRadioBase(props) {
     name,
     inputs,
     setInputs,
-    value
+    value,
+    checked
   } = props;
 
   function handleChange(e) {
@@ -75,6 +84,7 @@ export function InputRadioBase(props) {
       inputs={inputs}
       setInputs={setInputs}
       value={value}
+      checked={inputs[name] === id}
     />
   )
 }

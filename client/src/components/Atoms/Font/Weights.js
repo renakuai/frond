@@ -1,5 +1,6 @@
 export const Weights = {
-  regular: '400',
+  light: '400',
+  regular: '500',
   semibold: '700',
-  bold: '800'
+  bold: '800',
 }

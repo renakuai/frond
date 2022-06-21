@@ -7,7 +7,6 @@ module.exports = (req, res, next) => {
   }
   try {
     const data = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(data)
     if (req.params.communityid) {
       if (data.communities.includes(req.params.community)) {
         return next()

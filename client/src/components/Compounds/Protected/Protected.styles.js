@@ -22,3 +22,7 @@ export const Div = styled.div`
   margin-right: auto;
   gap: ${Spacing[1]}
 `
+
+export const SectionDiv = styled.section`
+margin-top: ${Spacing[2]}
+`

@@ -48,7 +48,7 @@ function ProtectedApp() {
 
   return (
     <Grid>
-      {(localStorage.activeCommunity && communitiesList) && < NavSide communitiesList={communitiesList} activeCommunity={activeCommunity} setActiveCommunity={setActiveCommunity} activeTab={activeTab} />}
+      {(localStorage.activeCommunity && communitiesList) && < NavSide communitiesList={communitiesList} activeCommunity={activeCommunity} setActiveCommunity={setActiveCommunity} activeTab={activeTab} setActiveTab={setActiveTab} />}
       {!localStorage.activeCommunity &&
         <Div><EmptyBase width="500px" children2="Create a community or join an existing one through an invite to get started." fullPage>
           Looks like you're not part of any communities yet!

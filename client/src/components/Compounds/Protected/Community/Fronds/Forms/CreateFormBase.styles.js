@@ -53,7 +53,14 @@ export const QuestionDiv = styled.div`
   box-sizing: border-box;
   overflow-y: scroll;
   overflow-x: hidden;
-  border: 2px solid ${Colors.grey[20]};
+  border: ${props => {
+    if (props.err) {
+      return '2px solid ' + Colors.red[20];
+    }
+    else {
+      return '2px solid ' + Colors.grey[20];
+    }
+  }};
   border-radius: 4px;
   padding: ${Spacing[1]};
   margin-top: ${Spacing[0.5]};

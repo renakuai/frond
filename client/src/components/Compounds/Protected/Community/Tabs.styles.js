@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { Spacing } from '../../Atoms/Spacing/Spacing.styles.js';
-import { Colors } from '../../Atoms/Colors/Colors.js';
+import { Spacing } from '../../../Atoms/Spacing/Spacing.styles.js';
+import { Colors } from '../../../Atoms/Colors/Colors.js';
 
 
 
@@ -12,7 +12,7 @@ export const Nav = styled.nav`
 `
 
 export const Spaces = css`
-  margin: ${Spacing[0.5]} 0 ${Spacing[0.5]} 0;
+  margin: ${Spacing[0.5]} 0 0.6rem 0;
 `
 
 export const Li = styled.li`
@@ -26,7 +26,7 @@ export const Ul = styled.ul`
   width: 100%;
   display: flex;
   flex-direction: row;
-  gap: ${Spacing[1]};
+  gap: ${Spacing[2]};
   border-bottom: 1px solid ${Colors.grey[30]}
 `
 

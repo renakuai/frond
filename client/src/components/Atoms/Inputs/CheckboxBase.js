@@ -12,7 +12,7 @@ export function CheckboxBase(props) {
     limit,
     allChecked,
     setAllChecked,
-    required
+    required,
   } = props;
 
   function handleChange(e) {

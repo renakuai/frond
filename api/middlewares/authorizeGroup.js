@@ -1,11 +1,12 @@
 const User = require('../models/user');
+const jwt = require('jsonwebtoken');
 
 //verify req.user has group id
-modules.exports = (req, res, next) => {
+module.exports = (req, res, next) => {
   const token = req.cookies.access_token;
   const data = jwt.verify(token, process.env.JWT_SECRET);
   try {
-    if (data.communities.includes(req.params.communityid)) {
+    if (data.communities.includes(req.params.id)) {
       return next();
     }
   } catch {

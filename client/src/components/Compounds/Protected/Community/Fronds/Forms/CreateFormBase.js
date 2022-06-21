@@ -1,12 +1,22 @@
 import React, { useState, useContext, useEffect } from "react";
 import { InputBase, InputLabelBase, InputRadioBase } from '../../../../../Atoms/Inputs/InputBase'
+import { InputErrorBase } from '../../../../../Atoms/Inputs/InputErrorBase'
 import { CheckboxBase } from '../../../../../Atoms/Inputs/CheckboxBase'
 import { InputDiv, CreateForm, QuestionDiv } from './CreateFormBase.styles'
 import ButtonBase from '../../../../../Atoms/Buttons/ButtonBase.js';
 import { PBase } from '../../../../../Atoms/Font/FontBase.js'
 import { Questions } from '../../../../../Atoms/Questions/Questions';
+import axios from "axios";
 
 function CreateFormBase(props) {
+
+  const { loading, setLoading, dataSent, setDataSent, submitErr, setSubmitErr } = props.submitData
+
+  const initialErr = {
+    name: null,
+    recipients: null,
+    dateStart: null
+  };
 
   const { communityMembers } = props;
 
@@ -17,6 +27,8 @@ function CreateFormBase(props) {
     cadence: '',
     recipients: [],
   })
+
+  const [err, setErr] = useState(initialErr)
 
   const [allChecked, setAllChecked] = useState({
     allChecked: false,
@@ -33,7 +45,7 @@ function CreateFormBase(props) {
     setAllChecked({
       ...allChecked,
       recipients: (communityMembers.map((user) => {
-        return [...inputs.recipients, user.email]
+        return [...inputs.recipients, user._id]
       }))
     });
   }, []);
@@ -43,6 +55,12 @@ function CreateFormBase(props) {
       setInputs({
         ...inputs,
         cadence: ''
+      })
+    }
+    else {
+      setInputs({
+        ...inputs,
+        cadence: 'weekly'
       })
     }
   }, [inputs.recurring])
@@ -62,6 +80,71 @@ function CreateFormBase(props) {
     return picks;
   }
 
+  function handleSubmit(e) {
+    if (handleValidation()) {
+      setLoading(true);
+
+      const inputObj = {
+        ...inputs,
+        questions: [...questions]
+      }
+
+      console.log(inputObj)
+      axios.post('http://localhost:9000/api/communities/' + localStorage.activeCommunity + '/fronds/create', inputObj, {
+        withCredentials: true,
+        credentials: 'include',
+      })
+        .then(res => {
+          setLoading(false);
+          setDataSent(true)
+        })
+        .catch(function (error) {
+          e.preventDefault();
+          setSubmitErr({
+            state: true,
+            message: error
+          });
+        })
+    }
+    else {
+      e.preventDefault();
+    }
+  }
+
+  function handleValidation() {
+    if (inputs.name.length < 1) {
+      setErr({
+        ...initialErr,
+        name: 'Please fill out a name for your Frond.'
+      })
+      return false
+    }
+    if (inputs.name.length > 50) {
+      setErr({
+        ...initialErr,
+        name: 'The name of your Frond should be less than 50 characters.'
+      })
+      return false
+    }
+    if (!inputs.recipients.length) {
+      setErr({
+        ...initialErr,
+        recipients: 'Please select at least one recipient to send this Frond to.'
+      })
+      return false
+    }
+    if (!inputs.dateStart) {
+      setErr({
+        ...initialErr,
+        dateStart: 'Please select a send date for this Frond.'
+      })
+      return false
+    }
+    else {
+      return true;
+    }
+  }
+
   return (
     <section>
       <CreateForm
@@ -69,6 +152,7 @@ function CreateFormBase(props) {
         id="signup"
         //onSubmit={(e) => handleSubmit(e)}
         alignment="end"
+        noValidate
       >
 
         <InputDiv direction="vertical">
@@ -84,7 +168,10 @@ function CreateFormBase(props) {
             inputs={inputs}
             setInputs={setInputs}
             required
+            maxlength="50"
+            err={err.name && true}
           />
+          <InputErrorBase>{err.name}</InputErrorBase>
         </InputDiv>
         <InputDiv direction="vertical">
           <InputLabelBase forLabel="dateStart">When would you like your first Frond to be sent?*</InputLabelBase>
@@ -96,8 +183,11 @@ function CreateFormBase(props) {
             value={inputs.dateSent}
             inputs={inputs}
             setInputs={setInputs}
+            min={new Date().toLocaleDateString('en-CA')}
+            err={err.dateStart && true}
             required
           />
+          <InputErrorBase>{err.dateStart}</InputErrorBase>
         </InputDiv>
         <InputDiv direction="horizontal">
           <CheckboxBase
@@ -138,8 +228,8 @@ function CreateFormBase(props) {
         <InputDiv direction="vertical">
           <InputLabelBase forLabel="recipients">Who would you like to send this Frond to?*</InputLabelBase>
           <PBase color="grey" size="small">You can only send Fronds to members of this group and you will automatically be included in each Frond you create.</PBase>
-
-          <QuestionDiv>
+          <InputErrorBase>{err.recipients}</InputErrorBase>
+          <QuestionDiv err={err.recipients && true}>
             <InputDiv direction="horizontal">
               <CheckboxBase
                 id="all"
@@ -154,11 +244,25 @@ function CreateFormBase(props) {
               <PBase color="grey" size="small">Select all</PBase>
             </InputDiv>
 
-            {communityMembers.map((user) => (user._id !== localStorage.userId &&
+            {communityMembers.map((user) => (user._id === localStorage.userId ?
               <InputDiv key={user._id + '_div'} direction="horizontal">
                 <CheckboxBase
                   key={user._id}
-                  id={user.email}
+                  id={user._id}
+                  type="multiple"
+                  name="recipients"
+                  direction="horizontal"
+                  inputs={inputs}
+                  setInputs={setInputs}
+                  allChecked={allChecked}
+                  setAllChecked={setAllChecked}
+                  required
+                />
+                <PBase color="grey" size="small">{'You ' + ' (' + user.email + ')'}</PBase>
+              </InputDiv> : <InputDiv key={user._id + '_div'} direction="horizontal">
+                <CheckboxBase
+                  key={user._id}
+                  id={user._id}
                   type="multiple"
                   name="recipients"
                   direction="horizontal"
@@ -169,8 +273,7 @@ function CreateFormBase(props) {
                   required
                 />
                 <PBase color="grey" size="small">{user.firstName + ' ' + user.lastName + ' (' + user.email + ')'}</PBase>
-              </InputDiv>
-            ))}
+              </InputDiv>))}
 
           </QuestionDiv>
           <InputDiv direction="vertical">
@@ -188,6 +291,7 @@ function CreateFormBase(props) {
           btnType="primary"
           width="200px"
           type="submit"
+          onClick={(e) => handleSubmit(e)}
         >Create Frond</ButtonBase>
       </CreateForm>
 

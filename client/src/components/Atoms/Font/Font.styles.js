@@ -6,8 +6,7 @@ import { Spacing } from '../Spacing/Spacing.styles.js'
 
 
 export const Header = css`
-  font-family: 'Mulish', serif;
-  weight: ${Weights.bold};
+  font-weight: ${Weights.semibold};
   line-height: 120%;
   color: ${Colors.grey[70]};
   margin-top: ${Spacing[0.25]};
@@ -66,8 +65,10 @@ export const P = styled.p`
         return Weights.semibold
       case ('bold'):
         return Weights.bold
-      default:
+      case ('regular'):
         return Weights.regular
+      default:
+        return Weights.light
     }
   }};
   margin-top: 0;

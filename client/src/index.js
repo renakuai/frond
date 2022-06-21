@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './globalStyles/index.css';
 import App from './App';
 import Home from './components/Compounds/Home/Home';
 import Signup from './components/Compounds/Auth/Signup/Signup';
@@ -9,6 +8,7 @@ import ProtectedApp from './components/Compounds/Protected/ProtectedApp';
 import CommunityHome from './components/Compounds/Protected/Community/Home/CommunityHome';
 import NoPage from './components/Compounds/Error/NoPage';
 import CreateFrond from './components/Compounds/Protected/Community/Fronds/CreateFrond';
+import Fronds from './components/Compounds/Protected/Community/Fronds/Fronds';
 
 
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -28,9 +28,12 @@ root.render(
             <Route path="signup" element={<Signup />} />
             <Route path="signin" element={<Signin />} />
             <Route path="protected" element={<ProtectedApp />}>
-              <Route path="community/:communityid" element={<CommunityHome />} />
+              <Route path="community/:communityid/home" element={<CommunityHome />} />
               <Route path="community" element={<Navigate to=":communityid/home" replace />} />
+              <Route path="community/:communityid" element={<Navigate to=":communityid/home" replace />} />
+              <Route path="community/:communityid/fronds" element={<Fronds />} />
             </Route>
+            <Route path="protected" element={<Navigate to="protected/community/:communityid/home" replace />} />
             <Route path="protected/community/:communityid/createfrond" element={<CreateFrond />} />
           </Route>
           <Route path="*" element={<NoPage />} />

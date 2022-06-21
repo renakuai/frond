@@ -7,7 +7,14 @@ import { Weights } from '../Font/Weights'
 export const Standards = css`
   font-size: ${Sizes.regular};
   padding: ${Spacing[0.5]};
-  border: 2px solid ${Colors.grey[20]};
+  border: ${props => {
+    if (props.err) {
+      return '2px solid ' + Colors.red[20]
+    }
+    else {
+      return '2px solid ' + Colors.grey[20]
+    }
+  }};
   border-radius: 4px;
   }}
 `
@@ -34,7 +41,8 @@ export const Input = styled.input.attrs((props) => {
       return 'type: number'
   }
 })
-  `${Standards}
+  `
+  ${Standards}
 `
 
 export const InputCheckbox = styled.input.attrs({

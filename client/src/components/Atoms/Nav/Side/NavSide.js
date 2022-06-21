@@ -7,11 +7,12 @@ import NavLinkBase from '../../../Atoms/Links/NavLinkBase.js';
 
 
 function NavSide(props) {
-  const { communitiesList, setActiveCommunity } = props;
+  const { communitiesList, setActiveCommunity, activeTab, setActiveTab } = props;
 
   function handleActiveRoute(e) {
     localStorage.setItem('activeCommunity', e.target.id);
     setActiveCommunity(findCommunity());
+    setActiveTab('home')
   }
 
   function findCommunity() {
@@ -21,7 +22,7 @@ function NavSide(props) {
 
   return (
     <Styles.Nav>
-      <ButtonBase size="medium" btnType="secondary" iconName="add">Create a community</ButtonBase>
+      <ButtonBase size="large" btnType="secondary" iconName="add">Create a community</ButtonBase>
       <H6Base color="grey" nav>My Communities</H6Base>
       {communitiesList && <Styles.Ul>
         {communitiesList.map((item, index) => (
@@ -29,7 +30,7 @@ function NavSide(props) {
             <NavLinkBase
               key={item._id + 'navlink'}
               id={item._id}
-              link={'/protected/community/' + item._id}
+              link={'/protected/community/' + item._id + '/home'}
               className={localStorage.activeCommunity === item._id && 'active'}
               onClick={(e) => handleActiveRoute(e)}>
               {item.name}
