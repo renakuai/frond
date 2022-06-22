@@ -247,7 +247,7 @@ function CreateFormBase(props) {
             {communityMembers.map((user) => (user._id === localStorage.userId ?
               <InputDiv key={user._id + '_div'} direction="horizontal">
                 <CheckboxBase
-                  key={user._id}
+                  key="yourid"
                   id={user._id}
                   type="multiple"
                   name="recipients"
@@ -279,7 +279,7 @@ function CreateFormBase(props) {
           <InputDiv direction="vertical">
             <InputLabelBase forLabel="questions">These are the questions in your first Frond:</InputLabelBase>
             {questions.map((q, i) => (
-              <PBase color="grey" size="small">{++i + '. ' + q}</PBase>
+              <PBase color="grey" key={i} size="small">{++i + '. ' + q}</PBase>
             ))}
           </InputDiv>
 

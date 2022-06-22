@@ -6,7 +6,6 @@ function Tab(props) {
   const {
     className,
     children,
-    key,
     id,
     onClick,
     link,
@@ -17,7 +16,6 @@ function Tab(props) {
     <TabElem
       width={width}
       className={className}
-      key={key}
       id={id}
       to={link}
       onClick={onClick}

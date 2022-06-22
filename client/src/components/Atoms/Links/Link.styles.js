@@ -22,7 +22,7 @@ font-size: ${props => {
       case ('small'):
         return Sizes.xsmall
       default:
-        break;
+        return Sizes.default;
     }
   }};
 background-color: ${props => {
@@ -38,14 +38,6 @@ background-color: ${props => {
     }
   }};
 border: none;
-box-shadow: ${props => {
-    if (props.type === 'secondary') {
-      return Shadows.default;
-    }
-    else {
-      return 'none'
-    }
-  }};
   text-decoration: none;
 width: ${props => props.width};
 border-radius: 4px;
@@ -100,18 +92,11 @@ padding: ${props => {
       case ('tertiary'):
         return Colors.jade[40]
       default:
-        return Colors.white
+        return Colors.jade[40]
     }
   }};
   &:hover {
-    text-decoration: ${props => {
-    if (props.type === 'tertiary') {
-      return 'underline'
-    }
-    else {
-      return 'none'
-    }
-  }};
+    text-decoration: ${props => props.underline ? 'underline' : 'none'};
   };
   &:active, &:visited, &:focus, &:link {
     color: ${props => {
@@ -123,7 +108,7 @@ padding: ${props => {
       case ('tertiary'):
         return Colors.jade[40]
       default:
-        return Colors.white
+        return Colors.jade[40]
     }
   }}
   };
@@ -155,7 +140,7 @@ export const MyNavLink = styled(Link)`
 `
 
 export const Path = styled.path`
-  fill: ${props => {
+  stroke: ${props => {
     switch (props.type) {
       case ('primary'):
         return Colors.white
@@ -163,6 +148,19 @@ export const Path = styled.path`
         return Colors.jade[30]
       case ('tertiary'):
         return Colors.jade[30]
+      default:
+        return Colors.grey[50]
     }
-  }}
+  }};
+  stroke-width: 1.5;
+ stroke-linecap: round;
+  stroke-linejoin: round
+`
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: ${Spacing[0.5]};
 `

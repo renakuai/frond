@@ -107,10 +107,13 @@ export const Path = styled.path`
       case ('primary'):
         return Colors.white
       case ('secondary'):
-        return Colors.grey[60]
+        return Colors.jade[30]
       case ('tertiary'):
-        return Colors.grey[60]
+        return Colors.jade[30]
     }
   }}
-  }
+  };
+  stroke-width: 1.5;
+  stroke-linecap: round;
+   stroke-linejoin: round
 `

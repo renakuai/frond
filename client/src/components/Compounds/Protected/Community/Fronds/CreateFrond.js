@@ -6,7 +6,8 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import ErrorBase from '../../../../Atoms/States/Error/ErrorBase';
 import BannerBase from '../../../../Atoms/Notifications/Banners/BannerBase'
-
+import LinkBase from '../../../../Atoms/Links/LinkBase'
+import { LoadingBase } from '../../../../Atoms/States/Loading/LoadingBase'
 
 function CreateFrond() {
 
@@ -30,7 +31,7 @@ function CreateFrond() {
   ))
 
   if (isLoading) {
-    return "Loading..."
+    return <LoadingBase />
   }
 
   if (isError) {
@@ -48,6 +49,7 @@ function CreateFrond() {
     setSubmitErr
   }
 
+  // form submission loading
   if (loading) {
     return 'Loading'
   }
@@ -58,8 +60,12 @@ function CreateFrond() {
 
   return (
     <section>
-
       <FrondGrid>
+        <LinkBase
+          size="medium"
+          iconName="back"
+          link={('/protected/community/' + localStorage.activeCommunity + '/home')}
+          underline>Back to Home</LinkBase>
         <H3Base>Create a Frond</H3Base>
         <BannerBase
           title="🤔 What is a Frond?"
