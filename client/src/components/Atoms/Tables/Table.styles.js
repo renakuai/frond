@@ -7,15 +7,15 @@ import { Shadows } from '../Shadows/Shadows.js';
 export const RowStyles = css`
 text-align: left;
 border-bottom: 1px solid ${Colors.grey[20]};
-padding: 0.5rem;
+padding: 0.75rem;
 `
 
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   background-color: ${Colors.white};
-  border: 1px solid ${Colors.grey[20]};
   border-radius: 8px;
+  margin-top: 1rem;
 `
 
 export const Th = styled.th`
@@ -23,10 +23,11 @@ export const Th = styled.th`
   color: ${Colors.grey[50]};
   font-size: 0.85rem;
   text-align: left;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+  font-weight: ${Weights.light};
 `
 export const Td = styled.th`
-  font-weight: ${Weights.regular};
+  font-weight: ${Weights.light};
   ${RowStyles}
 `
 export const Tr = styled.tr`

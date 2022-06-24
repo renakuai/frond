@@ -56,7 +56,8 @@ export const H6 = styled.h6`
 
 export const P = styled.p`
   font-size: ${props => {
-    if (props.size === 'regular') return Sizes.regular
+    if (props.size === 'large') return Sizes.medium
+    if (props.size === 'regular') return Sizes.default
     if (props.size === 'small') return Sizes.small
   }};
   font-weight: ${props => {

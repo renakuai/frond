@@ -4,21 +4,28 @@ import { Table, Th, Td, Tr } from './Table.styles'
 
 function TableBase(props) {
   const {
-    children,
+    data,
+    headers,
+    values
   } = props;
 
   return (
-    <Table>
+    <Table
+      data={data}
+      headers={headers}
+      values={values}>
       <Tr>
-        <Th>Name</Th>
-        <Th>Age</Th>
-        <Th>Gender</Th>
+        {headers.map((item) => (
+          <Th>{item}</Th>
+        ))}
       </Tr>
-      <Tr>
-        <Td>Anom</Td>
-        <Td>19</Td>
-        <Td>Male</Td>
-      </Tr>
+      {data.map((item) => (
+        <Tr>
+          {values.map((val) => (
+            <Td>{item[val] ? item[val] : '--'}</Td>
+          ))}
+        </Tr>
+      ))}
     </Table>
   )
 }
