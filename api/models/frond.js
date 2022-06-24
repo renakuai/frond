@@ -46,6 +46,10 @@ const FrondSchema = new Schema(
       type: String,
       enum: ['Weekly', 'Biweekly', '']
     },
+    community: {
+      type: Schema.Types.ObjectID,
+      ref: 'Community'
+    }
   }
 )
 

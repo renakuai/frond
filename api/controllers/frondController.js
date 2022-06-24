@@ -1,6 +1,7 @@
 const Frond = require('../models/frond');
 const { uploader, sendMultipleEmails } = require('../utils/index')
 const User = require('../models/user');
+const Community = require('../models/community');
 const { reduce } = require('async');
 
 
@@ -16,6 +17,7 @@ exports.create_frond_post = async (req, res) => {
       questions
     } = req.body;
 
+    const community = req.params.id;
 
     //find email based on _id
     const userData = await User.find({
@@ -29,9 +31,13 @@ exports.create_frond_post = async (req, res) => {
     })
 
     //create frond
-    const newFrond = new Frond({ ...req.body });
+    const newFrond = new Frond({ ...req.body, community });
 
-    newFrond.save();
+    //wait for frond to save
+    const _frond = await newFrond.save();
+
+    //then take frond and add it to the community
+    const _community = await Community.findByIdAndUpdate(community, { $push: { fronds: _frond } });
 
     //Get mail options
     let domain = "http://" + req.headers.host;
@@ -56,8 +62,15 @@ exports.create_frond_post = async (req, res) => {
   }
 };
 
-exports.frond_list_get = function (req, res) {
-  res.send('Not implemented: frond list: ' + req.params.id)
+exports.frond_list_get = function (req, res, next) {
+  Community.findById(req.params.id)
+    .populate('fronds')
+    .exec(function (err, community) {
+      if (err) {
+        return next(err)
+      }
+      res.send(community.fronds)
+    })
 }
 
 exports.frond_detail_get = function (req, res) {

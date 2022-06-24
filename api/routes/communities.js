@@ -10,8 +10,8 @@ const comment_controller = require('../controllers/commentController');
 const validate = require('../middlewares/validate');
 const authorizeGroup = require('../middlewares/authorizeGroup');
 
-//GET individual group
-router.get('/:id', community_controller.community_detail_get)
+//GET fronds in a community
+router.get('/:id/fronds', frond_controller.frond_list_get)
 
 //GET users in group
 router.get('/:id/users', authorizeGroup, community_controller.user_list_get);
