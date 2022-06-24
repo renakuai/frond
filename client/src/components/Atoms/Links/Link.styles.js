@@ -97,6 +97,7 @@ padding: ${props => {
   }};
   &:hover {
     text-decoration: ${props => props.underline ? 'underline' : 'none'};
+    border: ${props => (props.type === 'secondary') ? ('2px solid' + Colors.jade[30]) : 'none'};
   };
   &:active, &:visited, &:focus, &:link {
     color: ${props => {
@@ -135,6 +136,8 @@ export const MyNavLink = styled(Link)`
   &:hover {
     border-radius: 8px;
     color: ${Colors.jade[30]};
+    border: ${props => (props.btnType === 'secondary') ? ('2px solid' + Colors.jade[30]) : 'none'};
+  }};
   };
   ${LinkStyles};
 `

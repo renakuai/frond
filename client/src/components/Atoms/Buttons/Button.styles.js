@@ -77,7 +77,8 @@ export const Button = styled.button
         return 'none'
     }
   }};
-  text-decoration: ${props => {
+  border: ${props => (props.btnType === 'secondary') ? ('2px solid' + Colors.jade[30]) : 'none'};
+    text-decoration: ${props => {
     if (props.btnType === 'tertiary') {
       return 'underline'
     }
