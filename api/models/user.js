@@ -51,22 +51,6 @@ const UserSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Community'
     }],
-    questionAnswers: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Answer'
-    }],
-    questionsCreated: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Question'
-    }],
-    updatesCreated: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Update'
-    }],
-    comments: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Comment'
-    }],
     role: {
       type: String,
       enum: ['admin', 'basic']

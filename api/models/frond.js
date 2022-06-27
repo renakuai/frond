@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const { DateTime } = require("luxon");
 
 const FrondSchema = new Schema(
   {
@@ -50,8 +51,16 @@ const FrondSchema = new Schema(
       type: Schema.Types.ObjectID,
       ref: 'Community'
     }
-  }
+  }, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+}
 )
+
+FrondSchema.virtual('dateStart_formatted')
+  .get(function () {
+    return DateTime.fromJSDate(this.dateStart).toLocaleString(DateTime.DATE_MED)
+  })
 
 
 module.exports = mongoose.model('Frond', FrondSchema)

@@ -69,7 +69,7 @@ exports.frond_list_get = function (req, res, next) {
       if (err) {
         return next(err)
       }
-      res.send(community.fronds)
+      res.json(community.fronds)
     })
 }
 
