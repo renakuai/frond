@@ -26,16 +26,32 @@ exports.user_list_get = function (req, res, next) {
     })
 }
 
+exports.community_create_post = async (req, res) => {
+  try {
+    const {
+      name,
+      type,
+      members,
+      created
+    } = req.body
+
+    const new_community = new Community(...req.body);
+    await new_community.save();
+    res.status(200).json({
+      message: 'Community creation was successful'
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    })
+  }
+
+}
+
 exports.community_detail_get = function (req, res) {
   res.send('Not implemented: community Detail: ' + req.params.id)
-}
-
-exports.community_create_get = function (req, res) {
-  res.send('Not implemented: community Create Form GET')
-}
-
-exports.community_create_post = function (req, res) {
-  res.send('Not implemented: community Create Form POST')
 }
 
 exports.community_delete_get = function (req, res) {

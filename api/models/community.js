@@ -24,14 +24,6 @@ const CommunitySchema = new Schema(
       type: Schema.Types.ObjectID,
       ref: 'Frond'
     }],
-    updates: [{
-      type: Schema.Types.ObjectID,
-      ref: 'Update'
-    }],
-    groupQuestions: [{
-      type: Schema.Types.ObjectID,
-      ref: 'Question'
-    }],
     type: {
       type: String,
       required: true,
