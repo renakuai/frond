@@ -15,7 +15,7 @@ export const Table = styled.table`
   border-collapse: collapse;
   background-color: ${Colors.white};
   border-radius: 8px;
-  margin-top: 1rem;
+  margin-top: 1.75rem;
 `
 
 export const Th = styled.th`

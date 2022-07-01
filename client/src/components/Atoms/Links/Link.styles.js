@@ -12,6 +12,7 @@ const LinkStyles = css`
 display: flex;
 flex-direction: row;
 align-items: center;
+justify-content: ${props => (props.decoration === 'border') && 'center'};
 gap: ${Spacing[0.5]};
 font-size: ${props => {
     switch (props.size) {
@@ -37,19 +38,11 @@ background-color: ${props => {
         return Colors.white
     }
   }};
-border: none;
+  border: ${props => (props.decoration === 'border') ? ('2px solid' + Colors.grey[20]) : 'none'};
   text-decoration: none;
-width: ${props => props.width};
-border-radius: 4px;
-&:hover {
-  box-shadow: ${props => {
-    if (props.type === 'secondary') {
-      return Shadows.hover;
-    }
-    else {
-      return 'none'
-    }
-  }};
+  width: ${props => props.width};
+  border-radius: 4px;
+  &:hover {
   background-color: ${props => {
     switch (props.type) {
       case ('primary'):

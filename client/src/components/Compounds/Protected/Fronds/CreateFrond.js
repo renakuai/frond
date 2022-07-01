@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { H3Base } from '../../../../Atoms/Font/FontBase';
-import { FrondGrid, P } from './CreateFrond.styles';
+import { H3Base } from '../../../Atoms/Font/FontBase';
+import { Grid, P } from './CreateFrond.styles';
 import CreateFrondBase from './Forms/CreateFormBase';
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import ErrorBase from '../../../../Atoms/States/Error/ErrorBase';
-import BannerBase from '../../../../Atoms/Notifications/Banners/BannerBase'
-import LinkBase from '../../../../Atoms/Links/LinkBase'
-import { LoadingBase } from '../../../../Atoms/States/Loading/LoadingBase'
+import ErrorBase from '../../../Atoms/States/Error/ErrorBase';
+import BannerBase from '../../../Atoms/Notifications/Banners/BannerBase'
+import LinkBase from '../../../Atoms/Links/LinkBase'
+import { LoadingBase } from '../../../Atoms/States/Loading/LoadingBase'
 
 function CreateFrond() {
 
@@ -60,12 +60,13 @@ function CreateFrond() {
 
   return (
     <section>
-      <FrondGrid>
+      <Grid>
         <LinkBase
           size="medium"
           iconName="back"
-          link={('/protected/community/' + localStorage.activeCommunity + '/home')}
-          underline>Back to Home</LinkBase>
+          link={('/app/community/' + localStorage.activeCommunity + '/home')}
+          underline
+          svgBox="0 3 16 17">Back to Home</LinkBase>
         <H3Base>Create a Frond</H3Base>
         <BannerBase
           title="🤔 What is a Frond?"
@@ -76,7 +77,7 @@ function CreateFrond() {
           <P>Fronds consist of a few curated questions for people to respond to and sections for: ✋ high fives, 🆕 life updates, and sharing of 💡 interesting findings and links. Every recipient will be able to submit their responses and a newsletter of these shares will be sent to everyone on the scheduled date.</P>
         </BannerBase>
         {communityMembers && <CreateFrondBase communityMembers={communityMembers} submitData={submitData} />}
-      </FrondGrid>
+      </Grid>
     </section>
   );
 }

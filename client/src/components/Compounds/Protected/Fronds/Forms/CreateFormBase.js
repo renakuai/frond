@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
-import { InputBase, InputLabelBase, InputRadioBase } from '../../../../../Atoms/Inputs/InputBase'
-import { InputErrorBase } from '../../../../../Atoms/Inputs/InputErrorBase'
-import { CheckboxBase } from '../../../../../Atoms/Inputs/CheckboxBase'
+import { InputBase, InputLabelBase, InputRadioBase } from '../../../../Atoms/Inputs/InputBase'
+import { InputErrorBase } from '../../../../Atoms/Inputs/InputErrorBase'
+import { CheckboxBase } from '../../../../Atoms/Inputs/CheckboxBase'
 import { InputDiv, CreateForm, QuestionDiv } from './CreateFormBase.styles'
-import ButtonBase from '../../../../../Atoms/Buttons/ButtonBase.js';
-import { PBase } from '../../../../../Atoms/Font/FontBase.js'
-import { Questions } from '../../../../../Atoms/Questions/Questions';
+import ButtonBase from '../../../../Atoms/Buttons/ButtonBase.js';
+import { PBase } from '../../../../Atoms/Font/FontBase.js'
+import { Questions } from '../../../../Atoms/Questions/Questions';
 import axios from "axios";
 
 function CreateFormBase(props) {

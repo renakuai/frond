@@ -13,6 +13,8 @@ function LinkBase(props) {
     link,
     underline,
     width,
+    decoration,
+    svgBox
   } = props;
 
   return (
@@ -23,8 +25,10 @@ function LinkBase(props) {
       type={type}
       iconName={iconName}
       to={link}
+      decoration={decoration}
+      svgBox={svgBox}
     ><Container>
-        {iconName && <svg width="16" height="16" viewBox="3.5 3.5 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {iconName && <svg width="16" height="17" viewBox={svgBox} fill="none" xmlns="http://www.w3.org/2000/svg">
           <Path d={Icons[iconName]} type={type} />
         </svg>}
         {children}

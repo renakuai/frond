@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { H3Base } from '../../../Atoms/Font/FontBase';
-import Tabs from './Tabs';
+import Tabs from '../Tabs/Tabs';
 import { Outlet } from "react-router-dom";
-import Fronds from './Fronds/Fronds'
+import Fronds from '../Fronds/Fronds'
 
 
 function Community(props) {
@@ -11,7 +11,7 @@ function Community(props) {
   const nav = useNavigate();
 
   useEffect(() => {
-    nav("/protected/community/" + localStorage.activeCommunity + '/home');
+    nav("/app/community/" + localStorage.activeCommunity + '/home');
     setActiveCommunity(findCommunity());
   }, [])
 

@@ -22,6 +22,7 @@ function ModalBase(props) {
     <Modal
       type={type}
       id={id}
+      setOpen={setOpen}
     >
       <HeaderDiv>
         <H5Base>{title}</H5Base>

@@ -24,7 +24,7 @@ function Tabs(props) {
               width="fit-content"
               key={link.index + 'navlink'}
               id={link}
-              link={'/protected/community/' + localStorage.activeCommunity + '/' + link}
+              link={'/app/community/' + localStorage.activeCommunity + '/' + link}
               className={activeTab === link && 'active'}
               onClick={(e) => handleClick(e)}>
               {link[0].toUpperCase() + link.slice(1)}

@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import { Spacing } from '../../../../Atoms/Spacing/Spacing.styles.js';
-import { Colors } from '../../../../Atoms/Colors/Colors';
+import { Spacing } from '../../../Atoms/Spacing/Spacing.styles.js';
+import { Colors } from '../../../Atoms/Colors/Colors';
 
-export const FrondGrid = styled.div`
+export const Grid = styled.div`
   width: 600px;
   display: grid;
   gap: ${Spacing[2]};

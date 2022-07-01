@@ -1,14 +1,16 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { UserContext } from '../../../../contexts/UserContext.js';
 import { H6Base } from "../../../Atoms/Font/FontBase.js";
 import * as Styles from './NavSide.styles';
 import ButtonBase from '../../../Atoms/Buttons/ButtonBase.js';
+import LinkBase from '../../../Atoms/Links/LinkBase.js';
 import NavLinkBase from '../../../Atoms/Links/NavLinkBase.js';
-
+import CreateCommunity from '../../../Compounds/Protected/Community/CreateCommunity'
 
 function NavSide(props) {
   const { communitiesList, setActiveCommunity, activeTab, setActiveTab } = props;
 
+  const [open, setOpen] = useState(false);
   function handleActiveRoute(e) {
     localStorage.setItem('activeCommunity', e.target.id);
     setActiveCommunity(findCommunity());
@@ -20,9 +22,11 @@ function NavSide(props) {
     return item[0];
   }
 
+
   return (
     <Styles.Nav>
-      <ButtonBase size="large" btnType="secondary" iconName="add">Create a community</ButtonBase>
+      <ButtonBase size="large" btnType="secondary" decoration="border" iconName="add" onClick={() => setOpen(true)} svgBox="0 0 16 17">Create a community</ButtonBase>
+      {open && <CreateCommunity setOpen={setOpen} />}
       <H6Base color="grey" nav>My Communities</H6Base>
       {communitiesList && <Styles.Ul>
         {communitiesList.map((item, index) => (
@@ -30,7 +34,7 @@ function NavSide(props) {
             <NavLinkBase
               key={item._id + 'navlink'}
               id={item._id}
-              link={'/protected/community/' + item._id + '/home'}
+              link={'/app/community/' + item._id + '/home'}
               className={localStorage.activeCommunity === item._id && 'active'}
               onClick={(e) => handleActiveRoute(e)}>
               {item.name}

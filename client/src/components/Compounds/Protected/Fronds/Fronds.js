@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import LinkBase from '../../../../Atoms/Links/LinkBase.js';
-import { SectionDiv } from '../../Protected.styles';
-import { TableLoadingBase } from '../../../../Atoms/States/Loading/LoadingBase'
-import { H5Base, PBase } from '../../../../Atoms/Font/FontBase';
+import LinkBase from '../../../Atoms/Links/LinkBase.js';
+import { SectionDiv } from '../Protected.styles';
+import { TableLoadingBase } from '../../../Atoms/States/Loading/LoadingBase'
+import { H5Base, PBase } from '../../../Atoms/Font/FontBase';
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import ErrorBase from '../../../../Atoms/States/Error/ErrorBase';
-import TableBase from '../../../../Atoms/Tables/TableBase';
+import ErrorBase from '../../../Atoms/States/Error/ErrorBase';
+import TableBase from '../../../Atoms/Tables/TableBase';
 import { Title, Header } from './Frond.styles'
 
 function Fronds() {
@@ -23,6 +23,7 @@ function Fronds() {
       })
   ))
 
+
   const headers = [
     'Name',
     'Send Date',
@@ -31,7 +32,7 @@ function Fronds() {
 
   const values = [
     'name',
-    'dateStart',
+    'dateStart_formatted',
     'cadence'
   ]
 
@@ -57,7 +58,7 @@ function Fronds() {
           size="large"
           type="primary"
           icon="add"
-          link={'/protected/community/' + localStorage.activeCommunity + '/createfrond'}
+          link={'/app/community/' + localStorage.activeCommunity + '/createfrond'}
         >Create a Frond</LinkBase>
       </Header>
       <TableBase

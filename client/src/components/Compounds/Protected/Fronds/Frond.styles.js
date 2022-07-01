@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { Spacing } from '../../../../Atoms/Spacing/Spacing.styles.js';
-import { Colors } from '../../../../Atoms/Colors/Colors';
+import { Spacing } from '../../../Atoms/Spacing/Spacing.styles.js';
+import { Colors } from '../../../Atoms/Colors/Colors';
 
 export const Title = styled.div`
  display: flex;
