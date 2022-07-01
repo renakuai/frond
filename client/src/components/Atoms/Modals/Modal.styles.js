@@ -7,6 +7,7 @@ import { Spacing } from '../Spacing/Spacing.styles.js';
 import { NavLink, Link } from "react-router-dom"
 
 export const Modal = styled.div`
+  opacity: 1;
   position: fixed;
   top: ${(window.screenTop + 81) + 'px'};
   left: calc(50% - 288px);
@@ -28,5 +29,14 @@ export const HeaderDiv = styled.div`
 `
 
 export const Svg = styled.svg`
-cursor: pointer
+  cursor: pointer
+`
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background-color: rgba(82, 82, 82, 0.6);
+  width: 100vw;
+  height: 100vh;
 `

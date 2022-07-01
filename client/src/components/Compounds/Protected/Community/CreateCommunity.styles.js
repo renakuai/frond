@@ -13,3 +13,29 @@ export const P = styled.p`
 margin: 0;
 margin-top: 0.5rem;
 `
+
+export const Form = styled.form`
+  margin-top: 1rem;
+`
+
+export const InputDiv = styled.div`
+  display: flex;
+  flex-direction: ${props => {
+    switch (props.direction) {
+      case ('horizontal'):
+        return 'row'
+      case ('vertical'):
+        return 'column'
+    }
+  }};
+  gap: 8px;
+  width: inherit;
+  align-items: ${props => {
+    switch (props.direction) {
+      case ('horizontal'):
+        return 'center'
+      case ('vertical'):
+        return 'none'
+    }
+  }};
+  `

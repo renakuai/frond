@@ -5,19 +5,28 @@ import axios from 'axios';
 import ErrorBase from '../../../Atoms/States/Error/ErrorBase';
 import LinkBase from '../../../Atoms/Links/LinkBase'
 import { LoadingBase } from '../../../Atoms/States/Loading/LoadingBase';
-import { Grid, P } from './CreateCommunity.styles';
+import { Form, InputDiv } from './CreateCommunity.styles';
+import { InputLabelBase, InputBase } from '../../../Atoms/Inputs/InputBase';
+import { InputErrorBase } from '../../../Atoms/Inputs/InputErrorBase';
+import { PBase } from '../../../Atoms/Font/FontBase';
 import ModalBase from '../../../Atoms/Modals/ModalBase';
 
 
 function CreateCommunity(props) {
 
   const { setOpen } = props;
+  const [err, setErr] = useState(0)
   const [loading, setLoading] = useState(false);
   const [dataSent, setDataSent] = useState(false);
   const [submitErr, setSubmitErr] = useState({
     state: false,
     message: ''
   });
+
+  const [inputs, setInputs] = useState({
+    name: '',
+    members: []
+  })
 
   const submitData = {
     loading,
@@ -42,7 +51,25 @@ function CreateCommunity(props) {
       id="create_community"
       title="Create Community"
       setOpen={setOpen}>
-      Create a Community
+      <Form>
+        <InputDiv direction="vertical">
+          <InputLabelBase forLabel="name">What is the name of of your Frond?*</InputLabelBase>
+          <InputBase
+            type="text"
+            id="name"
+            name="name"
+            direction="vertical"
+            placeholder="Name of your Community"
+            value={inputs.name}
+            inputs={inputs}
+            setInputs={setInputs}
+            required
+            maxlength="50"
+            err={err.name && true}
+          />
+          <InputErrorBase>{err.name}</InputErrorBase>
+        </InputDiv>
+      </Form>
     </ModalBase>
   );
 }
