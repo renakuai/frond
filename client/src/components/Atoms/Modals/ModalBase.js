@@ -27,9 +27,9 @@ function ModalBase(props) {
       >
         <HeaderDiv>
           <H5Base>{title}</H5Base>
-          <Svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={(e) => handleClose(e)}>
+          <button onClick={(e) => handleClose(e)}><Svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d={Icons.close} fill="#5D6361" />
-          </Svg>
+          </Svg></button>
         </HeaderDiv>
         {children}
       </Modal>
