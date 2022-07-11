@@ -19,6 +19,7 @@ function Tab(props) {
       id={id}
       to={link}
       onClick={onClick}
+      role="tab"
     >
       {children}
     </TabElem>

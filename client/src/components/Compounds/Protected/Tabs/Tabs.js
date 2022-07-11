@@ -17,7 +17,7 @@ function Tabs(props) {
 
   return (
     <Styles.Nav>
-      <Styles.Ul>
+      <Styles.Ul role="tablist">
         {links.map((link, index) => (
           <Styles.Li key={index + 'li'}>
             <Tab
