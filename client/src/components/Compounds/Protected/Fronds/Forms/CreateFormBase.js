@@ -170,8 +170,9 @@ function CreateFormBase(props) {
             required
             maxlength="50"
             err={err.name && true}
+            aria-describedby="name-error"
           />
-          <InputErrorBase>{err.name}</InputErrorBase>
+          {err.name && <InputErrorBase id="name-error">{err.name}</InputErrorBase>}
         </InputDiv>
         <InputDiv direction="vertical">
           <InputLabelBase forLabel="dateStart">When would you like your first Frond to be sent?*</InputLabelBase>
@@ -185,9 +186,10 @@ function CreateFormBase(props) {
             setInputs={setInputs}
             min={new Date().toLocaleDateString('en-CA')}
             err={err.dateStart && true}
+            aria-describedby="date-error"
             required
           />
-          <InputErrorBase>{err.dateStart}</InputErrorBase>
+          {err.dateStart && <InputErrorBase id="date-error">{err.dateStart}</InputErrorBase>}
         </InputDiv>
         <InputDiv direction="horizontal">
           <CheckboxBase
@@ -228,7 +230,7 @@ function CreateFormBase(props) {
         <InputDiv direction="vertical">
           <InputLabelBase forLabel="recipients">Who would you like to send this Frond to?*</InputLabelBase>
           <PBase color="grey" size="small">You can only send Fronds to members of this group and you will automatically be included in each Frond you create.</PBase>
-          <InputErrorBase>{err.recipients}</InputErrorBase>
+          {err.recipients && <InputErrorBase id="recipients-error">{err.recipients}</InputErrorBase>}
           <QuestionDiv err={err.recipients && true}>
             <InputDiv direction="horizontal">
               <CheckboxBase

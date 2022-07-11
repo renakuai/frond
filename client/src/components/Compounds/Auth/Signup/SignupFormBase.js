@@ -32,11 +32,7 @@ function SignupFormBase(props) {
         console.log(res);
       })
       .catch(function (error) {
-        const { password } = error.response.data.error
-        setErrMsg({
-          passwordErr: password
-        })
-        console.log(password)
+        setErrMsg(error.response.data.message)
       })
   }
 

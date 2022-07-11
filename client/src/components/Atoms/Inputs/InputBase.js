@@ -9,7 +9,7 @@ export function InputLabelBase(props) {
   } = props;
 
   return (
-    <Label htmlFor={forLabel}>{children}</Label>
+    <Label role="alert" htmlFor={forLabel}>{children}</Label>
   )
 }
 
@@ -26,7 +26,8 @@ export function InputBase(props) {
     value,
     min,
     maxlength,
-    err
+    err,
+    ariaDescription
   } = props;
 
   function handleChange(e) {
@@ -41,6 +42,7 @@ export function InputBase(props) {
   return (
     <Input
       type={type}
+      aria-describedby={ariaDescription}
       id={id}
       name={name}
       onChange={e => handleChange(e)}

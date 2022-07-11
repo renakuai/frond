@@ -41,6 +41,7 @@ function BannerBase(props) {
         width={width}
         close={close}
         title={title}
+        role="alert"
       >
         <ContentDiv>
           <TextDiv>

@@ -55,6 +55,8 @@ export const TextDiv = styled.div`
 font-size: ${Sizes.small};
 display: flex;
 flex-direction: column;
+margin-bottom: ${Spacing[0.5]};
+
 `
 export const TitleDiv = styled.div`
 font-size: ${Sizes.default};

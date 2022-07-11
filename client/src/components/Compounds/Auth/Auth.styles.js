@@ -7,5 +7,6 @@ export const Section = styled.section`
   padding: ${Spacing[1]};
   display: flex;
   flex-direction: column;
-  gap: ${Spacing[2]}
+  gap: ${Spacing[2]};
+  align-items: center;
 `

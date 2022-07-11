@@ -53,7 +53,7 @@ function CreateCommunity(props) {
       setOpen={setOpen}>
       <Form>
         <InputDiv direction="vertical">
-          <InputLabelBase forLabel="name">What is the name of of your Frond?*</InputLabelBase>
+          <InputLabelBase forLabel="name">Name of new community*</InputLabelBase>
           <InputBase
             type="text"
             id="name"
@@ -66,8 +66,27 @@ function CreateCommunity(props) {
             required
             maxlength="50"
             err={err.name && true}
+            ariaDescription="name-error"
           />
-          <InputErrorBase>{err.name}</InputErrorBase>
+          {err.name && <InputErrorBase id="name-error">{err.name}</InputErrorBase>}
+        </InputDiv>
+        <InputDiv direction="vertical">
+          <InputLabelBase forLabel="name">Invite members using email*</InputLabelBase>
+          <InputBase
+            type="text"
+            id="name"
+            name="name"
+            direction="vertical"
+            placeholder="Name of your Community"
+            value={inputs.members}
+            inputs={inputs}
+            setInputs={setInputs}
+            required
+            maxlength="50"
+            err={err.name && true}
+            ariaDescription="name-error"
+          />
+          {err.name && <InputErrorBase>{err.name}</InputErrorBase>}
         </InputDiv>
       </Form>
     </ModalBase>

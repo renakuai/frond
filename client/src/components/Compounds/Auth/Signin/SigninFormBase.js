@@ -39,7 +39,7 @@ function SigninFormBase(props) {
         window.localStorage.setItem('userId', res.data.user._id.toString());
         window.localStorage.setItem('userFirstName', res.data.user.firstName);
         window.localStorage.setItem('isLoggedIn', 'true');
-        nav("/protected");
+        nav("/app");
         window.location.reload();
       })
       .catch(function (error) {

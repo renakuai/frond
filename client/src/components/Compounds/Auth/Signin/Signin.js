@@ -14,13 +14,13 @@ function Signin() {
       {!user.isLoggedIn && <H2Base>Sign in to your account</H2Base>}
       {(signinErr.length !== 0) && <BannerBase
         type="error"
-        width="400px"
+        width="450px"
       >{signinErr}</BannerBase>}
       {!user.isLoggedIn && <SigninFormBase
         setSigninErr={setSigninErr}
         user={user}
       />}
-      {user.isLoggedIn && <Navigate to="/protected" />}
+      {user.isLoggedIn && <Navigate to="/app" />}
     </Section>
   );
 }
