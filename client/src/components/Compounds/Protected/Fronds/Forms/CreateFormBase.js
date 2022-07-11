@@ -201,7 +201,7 @@ function CreateFormBase(props) {
             inputs={inputs}
             setInputs={setInputs}
           />
-          <PBase color="grey" size="small">Make this recurring</PBase>
+          <InputLabelBase forLabel="recurring" size="small">Make this recurring</InputLabelBase>
         </InputDiv>
         {inputs.recurring && <div><InputDiv direction="horizontal">
           <InputRadioBase
@@ -243,7 +243,7 @@ function CreateFormBase(props) {
                 allChecked={allChecked}
                 setAllChecked={setAllChecked}
               />
-              <PBase color="grey" size="small">Select all</PBase>
+              <InputLabelBase forLabel="recipients" size="small">Select all</InputLabelBase>
             </InputDiv>
 
             {communityMembers.map((user) => (user._id === localStorage.userId ?
@@ -260,7 +260,7 @@ function CreateFormBase(props) {
                   setAllChecked={setAllChecked}
                   required
                 />
-                <PBase color="grey" size="small">{'You ' + ' (' + user.email + ')'}</PBase>
+                <InputLabelBase forLabel="recipients" size="small">{'You ' + ' (' + user.email + ')'}</InputLabelBase>
               </InputDiv> : <InputDiv key={user._id + '_div'} direction="horizontal">
                 <CheckboxBase
                   key={user._id}
@@ -274,7 +274,7 @@ function CreateFormBase(props) {
                   setAllChecked={setAllChecked}
                   required
                 />
-                <PBase color="grey" size="small">{user.firstName + ' ' + user.lastName + ' (' + user.email + ')'}</PBase>
+                <InputLabelBase forLabel="recipients" size="small">{user.firstName + ' ' + user.lastName + ' (' + user.email + ')'}</InputLabelBase>
               </InputDiv>))}
 
           </QuestionDiv>

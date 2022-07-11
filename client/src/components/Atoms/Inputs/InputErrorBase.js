@@ -7,6 +7,6 @@ export function InputErrorBase(props) {
   } = props;
 
   return (
-    <Error>{children}</Error>
+    <Error role="alert">{children}</Error>
   )
 }

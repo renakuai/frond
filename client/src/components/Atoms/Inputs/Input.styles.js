@@ -20,9 +20,21 @@ export const Standards = css`
 `
 
 export const Label = styled.label`
-  font-size: ${Sizes.regular};
-  font-weight: ${Weights.semibold};
-  color: ${Colors.grey[70]};
+  font-size: ${props => {
+    if (props.size === 'small') return Sizes.small;
+    else return Sizes.regular;
+  }
+  };
+  font-weight: ${props => {
+    if (props.size === 'small') return Weights.light
+    else return Weights.semibold
+  }
+  };
+  color: ${props => {
+    if (props.size === 'small') return Colors.grey[50];
+    else return Colors.grey[70]
+  }
+  };
   text-align: left;
   margin: 0;
 `

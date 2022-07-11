@@ -53,7 +53,7 @@ function NavTop() {
   return (
     <Nav>
       <Grid>
-        <Link to="/"><img src="/Logo.svg"></img></Link>
+        <Link to="/"><img src="/Logo.svg" alt="logo" role="link"></img></Link>
         {(localStorage.isLoggedIn === 'false' || !localStorage.isLoggedIn) ? <Div>
           <LinkBase
             size="medium"

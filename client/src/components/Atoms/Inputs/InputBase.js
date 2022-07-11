@@ -5,11 +5,12 @@ import { Input, Label, InputCheckbox, InputRadio } from './Input.styles.js'
 export function InputLabelBase(props) {
   const {
     forLabel,
-    children
+    children,
+    size
   } = props;
 
   return (
-    <Label role="alert" htmlFor={forLabel}>{children}</Label>
+    <Label size={size} htmlFor={forLabel}>{children}</Label>
   )
 }
 
